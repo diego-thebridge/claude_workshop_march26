@@ -1,0 +1,14 @@
+Recibos pendientes de procesar / solicitar
+
+1. Comida equipo 2 marzo - tengo el ticket pero no lo he escaneado ($1,850)
+2. Uber al aeropuerto 3 marzo - pedir factura en la app
+3. Hotel Monterrey - Sofia dijo que lo mandaba pero no ha llegado
+4. Papelería Don Raúl - no dan factura, solo ticket. Preguntar a contabilidad si sirve
+5. Comida Logistica Express - pendiente pedir factura al restaurante (La Capital)
+   fue como $2,200 aprox
+6. Las sillas ergonómicas - el proveedor dijo que manda factura en 5 dias habiles
+7. Café y snacks - son de varios tickets chicos del Costco y Oxxo, hay que juntarlos
+8. Suscripciones de software - la mayoria se facturan auto pero revisar
+   que Figma y Vercel si esten generando CFDI
+9. LinkedIn Recruiter - necesito los datos fiscales actualizados para facturar
+10. Comida sprint planning 17 mar - Mariana tiene el voucher

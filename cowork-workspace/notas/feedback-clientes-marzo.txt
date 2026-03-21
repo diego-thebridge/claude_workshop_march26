@@ -1,0 +1,40 @@
+FEEDBACK CLIENTES - Marzo 2026 (recopilado de varias fuentes)
+
+[Zendesk ticket #4521] 3 mar - Restaurante El Buen Sabor:
+"El sistema se cae cada vez que intento generar más de 50 facturas en lote.
+Llevamos 3 meses con este problema." -- MUY ENOJADO, cliente enterprise
+
+Encuesta NPS - promedio marzo: 42 (bajo de 47 en febrero, investigar)
+
+[Email] Laura Mendoza, Farmacia del Norte - 7 mar:
+Le encanta el nuevo filtro de búsqueda avanzada. Dice que le ahorra
+como 2 horas a la semana. Pide que agreguemos exportar a Excel también.
+
+[Llamada] 10 mar - Constructora Ramirez y Asoc:
+Quieren integración con SAP. Dicen que si no la tenemos para junio
+van a migrar a Contabilium. Facturan $180k USD/mes con nosotros.
+
+[Twitter] @tienda_marilu: "Llevo 1 semana intentando contactar soporte
+de @ClaroPago y nada. Alguien sabe otro sistema de facturación?"
+-- Sofia ya le respondio por DM
+
+[Chat soporte] 12 mar - varios usuarios:
+Reportan que la exportación PDF no muestra el logo correctamente.
+Mismo bug que Carlos tiene pendiente.
+
+[Encuesta post-onboarding] María José, Estudio Contable MJ:
+"El onboarding fue rápido y el equipo muy amable. El producto es bueno
+pero le faltan reportes más detallados para contadores."
+Rating: 4/5
+
+15 mar - Demo con Logistica Express:
+Interesados en plan Enterprise. Preguntan por multi-moneda y
+facturación en USD/EUR. No lo tenemos todavía. Deal potencial: $2,400/mes
+
+[Zendesk] sin fecha - usuario anonimo:
+"La app es lenta. Tarda como 8 segundos en cargar el dashboard."
+Esto coincide con lo que reporto el equipo de infra sobre el query lento.
+
+[WhatsApp grupo clientes beta] 18 mar:
+Varios piden modo oscuro. "Trabajo de noche y la pantalla blanca me mata"
+Al menos 5 personas pidieron lo mismo esta semana.

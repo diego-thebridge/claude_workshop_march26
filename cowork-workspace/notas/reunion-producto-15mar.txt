@@ -1,0 +1,38 @@
+Reunion producto - 15 marzo 2026
+Asistentes: Diego, Mariana, Carlos, Sofia (se unio tarde), Pedro (por zoom)
+
+Empezamos hablando del roadmap Q2 pero Carlos trajo el tema de los bugs pendientes
+y se fue la conversacion por ahi un rato.
+
+- La funcionalidad de exportar PDF sigue sin funcionar bien en Safari
+  (Carlos dice que lleva 2 sprints asi)
+- Mariana propone priorizar el módulo de facturación antes que el dashboard nuevo
+  porque hay 3 clientes enterprise esperando
+- Sofia: competencia (NovaPay) acaba de lanzar facturacion automatica,
+  tenemos que movernos rapido
+
+PRIORIDADES Q2 (no quedó del todo claro el orden):
+1. Modulo facturacion v2
+2. Dashboard analytics (Diego quiere esto primero pero Mariana no esta de acuerdo)
+3. Integracion con Stripe y Mercado Pago
+4. App movil - al menos el MVP para julio?
+
+Pedro menciono que los inversores quieren ver metricas de retencion mejoradas
+antes de la ronda Serie A. Hay que hablar con el equipo de data.
+
+ACTION ITEMS (creo que son estos):
+- Diego: escribir el PRD del modulo facturacion para el viernes 20 mar
+- Carlos: resolver bug de exportacion PDF esta semana
+- Sofia: hacer benchmark de NovaPay y Contabilium, presentar el lunes
+- Mariana: revisar con clientes enterprise si la propuesta de facturacion cubre sus casos
+- Pedro: agendar llamada con fondo Atlantico para abril
+- ALGUIEN tiene que actualizar el Jira, no se quien quedo a cargo
+
+Sofia dijo algo de que el churn subio a 4.2% en febrero, revisar con analytics.
+Proximo meeting: 22 de marzo, misma hora (10am).
+
+Nota: Mariana no puede los viernes en la tarde, buscar otro horario para el sprint planning.
+Carlos sugiere mover a jueves 3pm.
+
+Tambien se habló rapido de contratar otro dev frontend, Diego va a hablar con RRHH.
+Presupuesto aprobado para 1 posicion senior.

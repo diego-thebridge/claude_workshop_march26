@@ -1,0 +1,31 @@
+Presupuesto Q2 2026 - BORRADOR
+(cifras en MXN, tipo cambio estimado: 17.5)
+
+Nómina y contractors: $380,000/mes (~$1,140,000 trimestre)
+  - equipo actual: 8 personas
+  - nueva contratacion frontend senior: +$55,000/mes a partir de mayo?
+
+Infraestructura (AWS + servicios): ~$50,000/mes
+  probablemente suba si lanzamos app movil, Carlos estima +20%
+
+Software y herramientas: $35,000/mes
+  ojo que hay renovaciones anuales en mayo (Figma, GitHub)
+
+Oficina y operaciones: $28,000/mes
+  renta + servicios + insumos
+  PENDIENTE: el contrato de renta se renueva en junio, puede subir
+
+Marketing y adquisicion: $60,000/mes
+  Google Ads: $25k, Meta Ads: $15k, contenido: $10k, eventos: $10k
+  Sofia quiere subir presupuesto de ads un 30% para llegar a meta de 500 clientes
+
+Viajes: $15,000/mes estimado
+  Conferencia Guadalajara abril, posible viaje a Bogotá en junio
+
+Legal y contabilidad: $12,000/mes
+
+TOTAL ESTIMADO MENSUAL: ~$580,000
+TOTAL Q2: ~$1,740,000 (aprox $99,400 USD)
+
+Burn rate actual: $45k USD/mes, con esto subiria a ~$55k USD/mes
+Revisar con Pedro si el runway sigue ok con este presupuesto

@@ -1,0 +1,28 @@
+IDEAS APP MOVIL - brainstorm varias sesiones
+
+- Push notifications para facturas vencidas (esto es CLAVE)
+- Vista simplificada del dashboard, no meter todo lo del web
+- Offline mode? Carlos dice que es muy complejo para el MVP
+  pero los usuarios de campo lo van a necesitar seguro
+
+La competencia tiene app pero es bastante mala, oportunidad ahi.
+NovaPay solo tiene iOS, nosotros deberiamos ir con React Native
+para cubrir ambas plataformas desde el inicio.
+
+Flujo principal: login -> dashboard resumen -> crear factura rapida -> enviar por whatsapp
+  (el envio por whatsapp es lo que mas piden los clientes, check the API docs)
+
+- Biometric auth (Face ID / huella)
+- Dark mode (nice to have)
+- Escaner de recibos con OCR - Sofia found a good library for this
+- Integración con la cámara para fotos de gastos
+
+Maybe we should do a design sprint first?
+Mariana knows a UX freelancer que cobra razonable.
+
+Monetización: la app seria parte del plan Pro ($29/mes) y Enterprise ($79/mes)
+Plan básico solo web.
+
+Pensar en widgets para iOS y Android - saldo pendiente, facturas del dia
+Timeline: MVP para julio es agresivo pero posible si empezamos en abril
+  necesitamos al menos 2 devs mobile dedicados

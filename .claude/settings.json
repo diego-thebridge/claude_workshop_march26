@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "default": "default",
+    "rules": [
+      {
+        "path": "sample-project/src/**",
+        "mode": "plan",
+        "reason": "Revisión cuidadosa antes de modificar código fuente"
+      },
+      {
+        "path": "sample-project/tests/**",
+        "mode": "acceptEdits",
+        "reason": "Tests se pueden modificar con confianza"
+      },
+      {
+        "path": "cowork-workspace/**",
+        "mode": "acceptEdits",
+        "reason": "Workspace de práctica, libre para modificar"
+      }
+    ]
+  }
+}

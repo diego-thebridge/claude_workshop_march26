@@ -1,0 +1,43 @@
+Metricas producto - Febrero 2026
+Fuente: Mixpanel + base de datos interna
+
+DAU: 1,024 (promedio diario)
+WAU: 2,870
+MAU: 4,215
+DAU/MAU ratio: 24.3%
+
+Clientes activos (con pago): 362
+  Plan Basico: 198
+  Plan Pro: 127
+  Plan Enterprise: 37
+
+MRR: $62,100 USD
+  Basico (198 x $15): $2,970
+  Pro (127 x $29): $3,683
+  Enterprise (37 x $79): $2,923
+  Custom enterprise: $52,524
+
+Churn rate: 4.2% (subió de 3.5% en enero -- ALERTA)
+  Clientes perdidos en feb: 15
+  Razones principales: precio (4), migraron a competencia (3),
+  cerraron negocio (3), insatisfechos con soporte (2), otros (3)
+
+Retención día 7: 68%
+Retención día 30: 52%
+Retención día 90: 41%
+
+Tasa de conversión trial -> pago: 12.8%
+  (era 14.1% en enero, revisar funnel)
+
+Tiempo promedio en plataforma: 23 min/sesión
+Sesiones promedio por usuario: 3.2/semana
+
+Features más usadas:
+  1. Crear factura (89% de sesiones)
+  2. Ver reportes (45%)
+  3. Gestión clientes (38%)
+  4. Exportar PDF (31%)
+  5. Búsqueda avanzada (28%) -- nueva, buen adoption
+
+Tickets soporte: 127 (subió de 98 en enero)
+Tiempo respuesta promedio: 4.2 horas

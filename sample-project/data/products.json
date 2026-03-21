@@ -1,0 +1,82 @@
+[
+  {
+    "id": "prod-001",
+    "name": "Wireless Bluetooth Headphones",
+    "description": "Over-ear noise cancelling headphones with 30-hour battery life",
+    "price": 79.99,
+    "stock": 45,
+    "category": "electronics"
+  },
+  {
+    "id": "prod-002",
+    "name": "Mechanical Keyboard",
+    "description": "RGB backlit mechanical keyboard with Cherry MX switches",
+    "price": 129.99,
+    "stock": 23,
+    "category": "electronics"
+  },
+  {
+    "id": "prod-003",
+    "name": "Running Shoes",
+    "description": "Lightweight breathable running shoes with cushioned sole",
+    "price": 89.95,
+    "stock": 60,
+    "category": "sports"
+  },
+  {
+    "id": "prod-004",
+    "name": "Coffee Maker",
+    "description": "12-cup programmable drip coffee maker with thermal carafe",
+    "price": 49.99,
+    "stock": 15,
+    "category": "kitchen"
+  },
+  {
+    "id": "prod-005",
+    "name": "Yoga Mat",
+    "description": "Non-slip extra thick yoga mat with carrying strap",
+    "price": 29.99,
+    "stock": 80,
+    "category": "sports"
+  },
+  {
+    "id": "prod-006",
+    "name": "USB-C Hub",
+    "description": "7-in-1 USB-C hub with HDMI, USB 3.0, and SD card reader",
+    "price": 34.99,
+    "stock": 0,
+    "category": "electronics"
+  },
+  {
+    "id": "prod-007",
+    "name": "Stainless Steel Water Bottle",
+    "description": "Insulated 32oz water bottle keeps drinks cold for 24 hours",
+    "price": 24.95,
+    "stock": 100,
+    "category": "kitchen"
+  },
+  {
+    "id": "prod-008",
+    "name": "Desk Lamp",
+    "description": "LED desk lamp with adjustable brightness and color temperature",
+    "price": 39.99,
+    "stock": 35,
+    "category": "home"
+  },
+  {
+    "id": "prod-009",
+    "name": "Backpack",
+    "description": "Water-resistant laptop backpack with USB charging port",
+    "price": 54.99,
+    "stock": 42,
+    "category": "accessories"
+  },
+  {
+    "id": "prod-010",
+    "name": "Wireless Mouse",
+    "description": "Ergonomic wireless mouse with silent click and long battery life",
+    "price": 19.99,
+    "stock": 70,
+    "category": "electronics"
+  }
+]

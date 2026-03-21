@@ -1,0 +1,45 @@
+Análisis competencia - notas Sofia + investigacion propia
+Última actualización: ~12 marzo 2026
+
+=== NOVAPAY ===
+- Acaban de lanzar facturación automática recurrente (nosotros no la tenemos!)
+- Precio: Plan básico $19/mes, Pro $39/mes, Enterprise desde $99/mes
+  (más caros que nosotros en todos los tiers)
+- Solo tienen app iOS, no Android todavía
+- Interfaz moderna, buena UX. Su onboarding es mejor que el nuestro segun reviews
+- Integraciones: Stripe, PayPal, QuickBooks
+- NO tienen integración con Mercado Pago ni facturación CFDI nativa
+  (esto es nuestra ventaja principal en México)
+- Funding: levantaron $3.2M Serie A en enero 2026
+- Equipo de ~25 personas, basados en Bogotá
+- Punto débil: soporte lento, muchas quejas en Twitter
+
+=== CONTABILIUM ===
+- Más establecidos, llevan 6 años en el mercado
+- Fuerte en Argentina y Colombia, creciendo en México
+- Precio: desde $12/mes (más barato pero con menos features)
+- Tienen integración SAP (Constructora Ramirez nos amenazó con irse por esto)
+- App móvil en ambas plataformas pero con malas reviews (2.8 estrellas)
+- Interfaz anticuada, se siente como software de 2018
+- Buen equipo de ventas enterprise, nos han quitado 2-3 clientes grandes
+- Reportes más completos que los nuestros para contadores
+
+=== FACTURAPI ===
+- Son más bien API/infraestructura, no tanto SaaS end-user
+- Precio por transacción, no suscripción mensual
+- Buenos para developers, no tanto para PyMEs sin equipo técnico
+- No compiten directamente con nosotros en el segmento principal
+- Pero algunos clientes tech-savvy prefieren armar su propia solución con ellos
+- Podrían ser partner más que competidor? Pensar en integracion
+
+=== ALEGRA ===
+- Populares en Colombia y Perú, entrando a México
+- Precio agresivo: desde $10/mes
+- Buen producto para microempresas y freelancers
+- Limitado para enterprise / empresas medianas
+- Buena app móvil (4.4 estrellas)
+- No tienen multi-moneda real, solo facturan en moneda local
+
+RESUMEN: Nuestra ventaja es CFDI nativo + Mercado Pago + precio medio.
+Debilidades: falta app móvil, pocos reportes avanzados, bugs pendientes.
+Para la Serie A hay que cerrar el gap en facturación automática y app móvil.
