@@ -1,16 +1,16 @@
-# Workshop: Claude Code & Cowork — De Desarrolladores a Toda la Organización
+# Workshop: Claude Code — De Analizar a Enviar
 
-## Descripción
+## Descripcion
 
-Workshop práctico de **120 minutos** donde aprenderás a usar **Claude Code** (para desarrollo) y **Claude Cowork** (para trabajo de conocimiento) en tu día a día profesional. Diseñado para una audiencia amplia: desarrolladores, product managers, analistas y cualquier profesional que quiera multiplicar su productividad con IA.
+Workshop practico de **120 minutos** donde aprenderas a usar **Claude Code** y **Claude Cowork** para analizar, construir, enviar y automatizar trabajo real. Recorremos un arco completo: auditar seguridad en modo lectura, arreglar vulnerabilidades con trabajo multi-archivo, crear un Pull Request, automatizar tareas con Skills, y expandir el uso de IA mas alla del codigo con Cowork.
 
-## ¿Para quién es este workshop?
+## Para quien es este workshop
 
-| Perfil | Qué vas a aprender |
+| Perfil | Que vas a aprender |
 |--------|-------------------|
-| **Desarrolladores** | Plan Mode, Skills de código, agents, automatización Git/CI |
-| **Product Managers** | Análisis de PRs, generación de specs, release notes automatizadas |
-| **Power Users** | Cowork para organizar archivos, generar informes, preparar reuniones |
+| **Desarrolladores** | Plan Mode, security hardening multi-archivo, PRs automatizados, Skills de codigo |
+| **Product Managers** | Analisis de PRs, release notes automatizadas, Skills de producto, Cowork |
+| **Power Users** | Cowork para organizar archivos, generar informes, resumir documentos |
 
 ## Prerequisitos
 
@@ -18,7 +18,7 @@ Workshop práctico de **120 minutos** donde aprenderás a usar **Claude Code** (
 - Cuenta en [claude.ai](https://claude.ai) (plan Pro, Team o Enterprise)
 - [Git](https://git-scm.com/) instalado (v2.30+)
 - Cuenta de [GitHub](https://github.com)
-- Familiaridad básica con la terminal
+- Familiaridad basica con la terminal
 
 ### Track Desarrolladores (adicional)
 - [Claude Code CLI](https://docs.anthropic.com/en/docs/claude-code) instalado
@@ -27,7 +27,7 @@ Workshop práctico de **120 minutos** donde aprenderás a usar **Claude Code** (
 ### Track Producto / Power Users (adicional)
 - [Claude Desktop](https://claude.ai/download) con Cowork habilitado
 
-> **Nota**: Este workshop NO requiere Docker, bases de datos ni configuración de MCPs.
+> **Nota**: Este workshop NO requiere Docker, bases de datos ni configuracion de MCPs.
 
 ## Setup Pre-Workshop (30 min antes)
 
@@ -47,7 +47,7 @@ cd ..
 
 ### 3. Track Cowork — Verificar acceso
 1. Abrir Claude Desktop
-2. Verificar que Cowork está disponible en tu plan
+2. Verificar que Cowork esta disponible
 3. Seleccionar la carpeta `cowork-workspace/` como carpeta de trabajo
 
 ### 4. Verificar Claude Code (desarrolladores)
@@ -58,64 +58,78 @@ claude "di hola"
 
 ## Agenda (120 min)
 
-| Tiempo | Bloque | Audiencia |
-|--------|--------|-----------|
-| 00:00 - 00:15 | **Bloque 1**: Introducción — El ecosistema Claude | Todos |
-| 00:15 - 00:35 | **Bloque 2**: Claude Code — Plan Mode y exploración | Devs (producto observa) |
-| 00:35 - 01:05 | **Bloque 3**: Skills — El superpoder compartido | Todos |
-| 01:05 - 01:30 | **Bloque 4**: Claude Cowork — Para toda la organización | Todos (foco producto) |
-| 01:30 - 01:45 | **Bloque 5**: GitHub Integration | Todos |
-| 01:45 - 02:00 | **Bloque 6**: Tips avanzados y cierre | Todos |
+| Tiempo | Bloque | Contenido | Audiencia |
+|--------|--------|-----------|-----------|
+| 00:00 - 00:10 | **Bloque 0** | Bienvenida y Setup | Todos |
+| 00:10 - 00:30 | **Bloque 1** | Plan Mode — Auditoria de seguridad | Devs (producto observa) |
+| 00:30 - 00:55 | **Bloque 2** | Trabajo complejo — Security hardening | Todos |
+| 00:55 - 01:10 | **Bloque 3** | Crear un Pull Request | Todos |
+| 01:10 - 01:40 | **Bloque 4** | Skills — La nueva gran evolucion | Todos |
+| 01:40 - 01:55 | **Bloque 5** | Cowork — Mas alla del codigo | Todos (foco producto) |
+| 01:55 - 02:00 | **Bloque 6** | Tips avanzados y cierre | Todos |
+
+### El arco narrativo
+
+```
+Analizar → Planificar → Ejecutar → Enviar → Automatizar → Expandir
+Plan Mode    Plan Mode    Code       Git/PR    Skills       Cowork
+```
 
 ## Estructura del Repositorio
 
 ```
 claude_workshop_march26/
 ├── README.md                 # Este archivo
-├── INDEX.md                  # Navegación por perfiles
+├── INDEX.md                  # Navegacion por perfiles
 ├── EXERCISES.md              # Todos los ejercicios paso a paso
+├── INSTRUCTOR-GUIDE.md       # Guia para el instructor
 ├── .claude/
-│   ├── settings.json         # Configuración de permisos
+│   ├── settings.json         # Configuracion de permisos
 │   ├── agents/               # Agents de ejemplo
 │   │   └── security-auditor.md
 │   └── skills/               # Skills de ejemplo
 │       ├── code-review/
 │       ├── product-spec/
-│       └── meeting-prep/
-├── sample-project/           # Proyecto Node.js para ejercicios de Code
+│       ├── meeting-prep/
+│       └── release-notes/
+├── sample-project/           # API Express.js con vulnerabilidades intencionales
 │   ├── package.json
 │   ├── src/
 │   ├── tests/
 │   └── data/
-├── cowork-workspace/         # Carpeta de trabajo para ejercicios de Cowork
+├── cowork-workspace/         # Archivos de empresa ficticia para Cowork
 │   ├── notas/
 │   ├── gastos/
 │   └── informes/
 ├── guides/
-│   ├── quick-reference.md    # Referencia rápida de comandos
-│   ├── skills-guide.md       # Guía completa de Skills
-│   └── cowork-guide.md       # Guía de Cowork
+│   ├── quick-reference.md    # Referencia rapida de comandos
+│   ├── skills-guide.md       # Guia completa de Skills
+│   └── cowork-guide.md       # Guia de Cowork
+├── examples/
+│   └── settings-advanced.json # Ejemplo avanzado de hooks y permisos
 └── solutions/                # Soluciones de los ejercicios
 ```
 
 ## Materiales de Referencia
 
-- [Documentación oficial de Claude Code](https://docs.anthropic.com/en/docs/claude-code)
-- [Guía de Cowork](https://support.claude.com/en/articles/13345190-get-started-with-cowork)
-- [Referencia rápida](guides/quick-reference.md)
-- [Guía de Skills](guides/skills-guide.md)
+- [Documentacion oficial de Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+- [Guia de Cowork](https://support.claude.com/en/articles/13345190-get-started-with-cowork)
+- [Referencia rapida](guides/quick-reference.md)
+- [Guia de Skills](guides/skills-guide.md)
+- [Guia del instructor](INSTRUCTOR-GUIDE.md)
 
 ## Formatos del Workshop
 
-| Formato | Duración | Contenido |
+| Formato | Duracion | Contenido |
 |---------|----------|-----------|
-| **Compacto** | 90 min | Bloques 1, 3, 4 y 5 |
-| **Estándar** | 120 min | Todos los bloques |
+| **Compacto** | 90 min | Bloques 0, 1, 4 y 5 (Plan Mode + Skills + Cowork) |
+| **Estandar** | 120 min | Todos los bloques |
 | **Extendido** | 150+ min | Todos los bloques + ejercicios extra + Q&A ampliado |
 
-## Después del Workshop
+## Despues del Workshop
 
 1. Revisa las [soluciones](solutions/) de los ejercicios
-2. Explora la [guía de Skills](guides/skills-guide.md) para crear los tuyos
-3. Lee la [guía de Cowork](guides/cowork-guide.md) para casos de uso avanzados
-4. Adapta los Skills del directorio `.claude/skills/` a tu equipo
+2. Explora la [guia de Skills](guides/skills-guide.md) para crear los tuyos
+3. Lee la [guia de Cowork](guides/cowork-guide.md) para casos avanzados
+4. Adapta los Skills de `.claude/skills/` a tu equipo
+5. Comparte tus Skills via Git con el equipo

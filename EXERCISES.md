@@ -1,6 +1,6 @@
-# Ejercicios del Workshop: Claude Code & Cowork
+# Ejercicios del Workshop: Claude Code — De Analizar a Enviar
 
-> **Duración total**: 120 minutos
+> **Duracion total**: 120 minutos
 > **Audiencia**: Desarrolladores, Product Managers, Power Users
 > **Requisitos previos**: Ver [README.md](README.md) para setup completo
 
@@ -8,36 +8,28 @@
 
 ## Tabla de Contenidos
 
-- [Bloque 1: Introduccion — El ecosistema Claude (15 min)](#bloque-1-introduccion--el-ecosistema-claude)
-- [Bloque 2: Claude Code — Plan Mode y Exploracion (20 min)](#bloque-2-claude-code--plan-mode-y-exploracion)
-- [Bloque 3: Skills — El superpoder compartido (30 min)](#bloque-3-skills--el-superpoder-compartido)
-- [Bloque 4: Claude Cowork — Para toda la organizacion (25 min)](#bloque-4-claude-cowork--para-toda-la-organizacion)
-- [Bloque 5: GitHub Integration (15 min)](#bloque-5-github-integration)
-- [Bloque 6: Tips avanzados y cierre (15 min)](#bloque-6-tips-avanzados-y-cierre)
+- [Bloque 0: Bienvenida y Setup (10 min)](#bloque-0-bienvenida-y-setup)
+- [Bloque 1: Plan Mode — Auditoria de Seguridad (20 min)](#bloque-1-plan-mode--auditoria-de-seguridad)
+- [Bloque 2: Trabajo Complejo — Security Hardening (25 min)](#bloque-2-trabajo-complejo--security-hardening)
+- [Bloque 3: Crear un Pull Request (15 min)](#bloque-3-crear-un-pull-request)
+- [Bloque 4: Skills — La Nueva Gran Evolucion (30 min)](#bloque-4-skills--la-nueva-gran-evolucion)
+- [Bloque 5: Cowork — Mas Alla del Codigo (15 min)](#bloque-5-cowork--mas-alla-del-codigo)
+- [Bloque 6: Tips Avanzados y Cierre (5 min)](#bloque-6-tips-avanzados-y-cierre)
 
 ---
 
-## Bloque 1: Introduccion — El ecosistema Claude
+## Bloque 0: Bienvenida y Setup
 
-**Duracion**: 15 minutos
-**Dificultad**: ⭐
+**Duracion**: 10 minutos
 **Audiencia**: Todos los participantes
 
-### Contexto: Tres herramientas, un mismo cerebro
-
-Claude se presenta en tres formatos principales, cada uno disenado para un contexto de uso diferente:
+### El ecosistema Claude: tres herramientas, un mismo cerebro
 
 | Herramienta | Que es | Para quien | Donde se usa |
 |-------------|--------|------------|--------------|
 | **Claude Chat** | Conversacion con IA en el navegador | Todos | [claude.ai](https://claude.ai) |
 | **Claude Code** | Agente de programacion en la terminal | Desarrolladores | Terminal / CLI |
 | **Claude Cowork** | Asistente de trabajo integrado con archivos locales | Toda la organizacion | Claude Desktop |
-
-**Claude Chat** es la interfaz web clasica. Sirve para preguntas rapidas, brainstorming y tareas puntuales. No tiene acceso a tu sistema de archivos local.
-
-**Claude Code** es un agente que vive en tu terminal. Puede leer, modificar y crear archivos en tu proyecto. Ejecuta comandos, corre tests, hace commits de Git. Piensa en el como un desarrollador junior muy rapido que trabaja a tu lado.
-
-**Claude Cowork** es la version de escritorio para trabajo de conocimiento. Accede a carpetas locales, organiza documentos, genera informes, y se conecta a servicios como Google Drive o Gmail. Es el asistente para las personas que no viven en la terminal.
 
 **La clave**: los tres usan el mismo modelo de lenguaje (Claude). La diferencia es el contexto al que tienen acceso y las acciones que pueden ejecutar.
 
@@ -52,13 +44,10 @@ Claude se presenta en tres formatos principales, cada uno disenado para un conte
 | Generar un informe a partir de datos | Claude Cowork |
 | Crear un PR con tests | Claude Code |
 | Resumir un documento largo | Claude Chat o Claude Cowork |
-| Revisar PRs sin saber programar | Claude Code (Plan Mode) |
 
 ---
 
-### Ejercicio 1.1: Verifica tu setup
-
-**Objetivo**: Confirmar que tienes las herramientas necesarias instaladas y funcionando.
+### Ejercicio 0.1: Verifica tu setup
 
 **Tiempo**: 5 minutos
 
@@ -70,30 +59,21 @@ Claude se presenta en tres formatos principales, cada uno disenado para un conte
    ```bash
    claude --version
    ```
-   Deberias ver un numero de version (por ejemplo, `1.x.x`).
 
-3. Verifica que el repositorio esta clonado:
+3. Verifica que el repositorio esta clonado y el proyecto funciona:
    ```bash
-   cd claude_workshop_march26
-   ls
-   ```
-   Deberias ver las carpetas `sample-project/`, `cowork-workspace/`, `guides/`, etc.
-
-4. Verifica que el proyecto de ejemplo funciona:
-   ```bash
-   cd sample-project
+   cd claude_workshop_march26/sample-project
    npm install
    npm test
    ```
 
-5. Inicia Claude Code en el directorio del workshop:
+4. Inicia Claude Code en el directorio del workshop:
    ```bash
    cd ..
    claude
    ```
-   Deberias ver el prompt interactivo de Claude Code.
 
-6. Escribe un saludo simple para confirmar que funciona:
+5. Escribe un saludo simple para confirmar que funciona:
    ```
    Hola, dime en que directorio estamos trabajando
    ```
@@ -103,41 +83,27 @@ Claude se presenta en tres formatos principales, cada uno disenado para un conte
 1. Abre **Claude Desktop** en tu computadora.
 
 2. Verifica que tienes acceso a Cowork:
-   - En la pantalla principal, busca la opcion para abrir una carpeta o workspace.
+   - Busca la opcion para abrir una carpeta o workspace.
    - Si ves la opcion "Cowork" o "Open folder", tu plan lo soporta.
 
-3. Selecciona la carpeta del workshop:
-   - Navega hasta `claude_workshop_march26/cowork-workspace/`
-   - Seleccionala como tu carpeta de trabajo.
+3. Selecciona la carpeta `claude_workshop_march26/cowork-workspace/` como tu carpeta de trabajo.
 
-4. Escribe un saludo simple:
+4. Escribe un saludo:
    ```
    Hola, que archivos puedes ver en esta carpeta?
    ```
 
-#### Resultado esperado
-
-- Los desarrolladores deberian tener Claude Code respondiendo en su terminal.
-- Los usuarios de Cowork deberian ver que Claude identifica los archivos en `cowork-workspace/`.
-- Si algo fallo, levanta la mano. Es mejor resolver problemas de setup ahora.
-
 #### Problemas comunes
 
-- **"claude: command not found"**: Necesitas instalar Claude Code. Ejecuta `npm install -g @anthropic-ai/claude-code` o sigue la [guia de instalacion](https://docs.anthropic.com/en/docs/claude-code).
-- **"npm test" falla**: Asegurate de tener Node.js 18+ instalado (`node --version`).
-- **Cowork no aparece en Claude Desktop**: Verifica que tienes un plan Pro, Team o Enterprise. Actualiza Claude Desktop a la ultima version.
-
-#### Para saber mas
-
-- [Instalacion de Claude Code](https://docs.anthropic.com/en/docs/claude-code/getting-started)
-- [Descarga de Claude Desktop](https://claude.ai/download)
-- [Documentacion de Cowork](https://support.claude.com/en/articles/13345190-get-started-with-cowork)
+- **"claude: command not found"**: Instala Claude Code con `npm install -g @anthropic-ai/claude-code` o sigue la [guia de instalacion](https://docs.anthropic.com/en/docs/claude-code/getting-started).
+- **"npm test" falla**: Asegurate de tener Node.js 18+ (`node --version`).
+- **Cowork no aparece**: Verifica que tienes un plan Pro, Team o Enterprise. Actualiza Claude Desktop a la ultima version.
 
 ---
 
-## Bloque 2: Claude Code — Plan Mode y Exploracion
+## Bloque 1: Plan Mode — Auditoria de Seguridad
 
-**Duracion**: 20 minutos
+**Duracion**: 20 minutos (10 min demo + 10 min ejercicio)
 **Dificultad**: ⭐⭐
 **Audiencia**: Desarrolladores (producto observa y aprende)
 
@@ -146,7 +112,7 @@ Claude se presenta en tres formatos principales, cada uno disenado para un conte
 Plan Mode es un modo de operacion de Claude Code en el que el agente **analiza y planifica sin ejecutar cambios**. Es como pedirle a un consultor que revise tu proyecto y te de un informe, sin que toque nada.
 
 Para activar Plan Mode:
-- Usa la combinacion de teclas `Shift+Tab` dentro de Claude Code para alternar entre modo normal y Plan Mode.
+- Usa `Shift+Tab` dentro de Claude Code para alternar entre modo normal y Plan Mode.
 - Veras el indicador cambiando de `>` a `plan>` en el prompt.
 - En Plan Mode, Claude puede leer archivos, analizar codigo y generar recomendaciones, pero **no modificara ningun archivo**.
 
@@ -157,9 +123,30 @@ Esto es especialmente util para:
 
 ---
 
-### Ejercicio 2.1: Analisis de arquitectura y seguridad
+### Demo del instructor (10 min)
 
-**Objetivo**: Usar Plan Mode para analizar el proyecto `sample-project/` e identificar vulnerabilidades de seguridad sin modificar nada.
+El instructor abrira Claude Code en `sample-project/` y activara Plan Mode con `Shift+Tab`. Usara este prompt:
+
+```
+Analiza la arquitectura completa de este proyecto. Quiero:
+1. Estructura de archivos y endpoints de la API
+2. Como maneja la autenticacion
+3. Identifica TODAS las vulnerabilidades de seguridad, clasificadas por severidad (Critica, Alta, Media)
+4. Para cada vulnerabilidad: archivo, linea, que es el problema, que podria hacer un atacante
+
+No modifiques ningun archivo.
+```
+
+**Observa como Claude**:
+- Lee los archivos del proyecto uno por uno.
+- Construye un mapa mental de la arquitectura.
+- Identifica patrones y problemas sin tocar nada.
+
+---
+
+### Ejercicio 1.1: Tu propia auditoria de seguridad
+
+**Objetivo**: Usar Plan Mode para analizar el proyecto `sample-project/` e identificar vulnerabilidades.
 
 **Tiempo**: 10 minutos
 
@@ -171,7 +158,7 @@ Esto es especialmente util para:
    claude
    ```
 
-2. Activa Plan Mode presionando `Shift+Tab`. El prompt deberia cambiar a `plan>`.
+2. Activa Plan Mode presionando `Shift+Tab`. El prompt debe cambiar a `plan>`.
 
 3. Escribe el siguiente prompt:
    ```
@@ -179,38 +166,25 @@ Esto es especialmente util para:
    1. Cual es la estructura de archivos y carpetas
    2. Que endpoints tiene la API y que hace cada uno
    3. Como maneja la autenticacion
-   4. Como almacena los datos (archivos JSON, base de datos, etc.)
-   5. Identifica al menos 3 vulnerabilidades de seguridad o malas practicas
+   4. Identifica TODAS las vulnerabilidades de seguridad con su severidad
+   5. Para cada vulnerabilidad: archivo, linea, problema, riesgo
 
    No modifiques ningun archivo. Solo analiza y reporta.
    ```
 
-4. Observa como Claude:
-   - Lee los archivos del proyecto uno por uno.
-   - Construye un mapa mental de la arquitectura.
-   - Identifica patrones y problemas.
-
-5. Revisa el informe que genera. Deberia incluir:
-   - Un mapa de la estructura del proyecto.
-   - Lista de endpoints con sus metodos HTTP.
-   - Analisis del manejo de JWT y autenticacion.
-   - Vulnerabilidades concretas (secretos hardcodeados, falta de validacion, etc.).
-
-#### Resultado esperado
-
-Claude deberia generar un informe detallado que incluya al menos estos hallazgos:
-
-- La estructura del proyecto con `src/`, `data/`, `tests/`.
-- Endpoints REST como `GET /api/products`, `POST /api/auth/login`, etc.
-- Problemas de seguridad como:
-  - Secretos JWT hardcodeados o en texto plano.
-  - Falta de rate limiting.
-  - Validacion de entrada insuficiente.
-  - Ausencia de HTTPS forzado.
+4. Revisa el informe. Deberia identificar al menos estas vulnerabilidades:
+   - **Critica**: JWT secret hardcodeado (`super-secret-key-12345`)
+   - **Critica**: Code injection via `new Function()` en busqueda de productos
+   - **Alta**: Passwords almacenados en texto plano
+   - **Alta**: Endpoint DELETE de productos sin autenticacion
+   - **Alta**: Passwords expuestos en respuestas de la API
+   - **Media**: Falta de validacion de input en POST de productos
+   - **Media**: GET de usuarios sin control de acceso
+   - **Media**: No se verifica stock al crear pedidos
 
 #### Para personas de producto
 
-Aunque no escribas codigo, este ejercicio muestra algo poderoso: puedes pedirle a Claude Code que te explique cualquier proyecto en lenguaje llano. Prueba variaciones como:
+Aunque no escribas codigo, este ejercicio muestra algo poderoso: puedes pedirle a Claude que te explique cualquier proyecto. Prueba esta variante:
 
 ```
 Explicame este proyecto como si fuera un product manager que necesita
@@ -219,106 +193,234 @@ entender que hace para escribir la documentacion del producto.
 
 #### Problemas comunes
 
-- **Claude intenta modificar archivos**: Asegurate de estar en Plan Mode (el prompt debe mostrar `plan>`). Presiona `Shift+Tab` si no lo esta.
-- **El analisis es muy superficial**: Se especifico en tu prompt. Pidele que mire archivos concretos si no los detecto.
-- **Claude pide permiso para ejecutar comandos**: En Plan Mode no deberia necesitarlo. Si lo hace, di "no" y reformula tu pregunta.
-
-#### Para saber mas
-
-- [Documentacion de Plan Mode](https://docs.anthropic.com/en/docs/claude-code/core-features#plan-mode)
-- [Mejores practicas para analisis de codigo](https://docs.anthropic.com/en/docs/claude-code/best-practices)
+- **Claude intenta modificar archivos**: Asegurate de estar en Plan Mode (`plan>`). Presiona `Shift+Tab` si no lo esta.
+- **El analisis es muy superficial**: Se especifico en tu prompt. Pide que mire archivos concretos.
+- **Claude pide permiso para ejecutar comandos**: En Plan Mode no deberia necesitarlo. Di "no" y reformula.
 
 ---
 
-### Ejercicio 2.2: Generacion de documentacion tecnica
+## Bloque 2: Trabajo Complejo — Security Hardening
 
-**Objetivo**: Usar Claude Code para generar documentacion tecnica completa del proyecto, demostrando que Claude entiende profundamente el codigo.
+**Duracion**: 25 minutos (demo live)
+**Dificultad**: ⭐⭐⭐⭐
+**Audiencia**: Todos (el instructor conduce, participantes siguen u observan)
+
+### Contexto: De analisis a accion
+
+En el bloque anterior identificamos 8-9 vulnerabilidades de seguridad. Ahora vamos a arreglarlas todas en una sola sesion con Claude Code. Esto demuestra la capacidad de Claude para hacer **trabajo complejo multi-archivo** de forma coordinada.
+
+---
+
+### Demo en vivo: Arreglar todas las vulnerabilidades
+
+**Importante**: Sal de Plan Mode (`Shift+Tab`) para volver al modo normal. Ahora Claude SI puede modificar archivos.
+
+#### El prompt (un solo prompt comprehensivo)
+
+```
+Basandote en el analisis de seguridad que acabamos de hacer, arregla las
+siguientes vulnerabilidades criticas y altas en este proyecto:
+
+1. CRITICA - JWT Secret hardcodeado: Mueve el secret a una variable de
+   entorno. Crea un archivo .env con el secret y actualiza auth.js y
+   users.js para leerlo de process.env.
+
+2. CRITICA - Code injection en busqueda: En products.js, el endpoint de
+   busqueda usa new Function() que permite inyeccion de codigo. Reemplazalo
+   con un filtro seguro usando .filter() y .includes().
+
+3. ALTA - Passwords en texto plano: Usa bcrypt para hashear passwords
+   al registrar usuarios y para verificarlos en el login. Instala bcrypt
+   si hace falta.
+
+4. ALTA - DELETE sin autenticacion: Anade el middleware de autenticacion
+   al endpoint DELETE /api/products/:id.
+
+5. ALTA - Passwords en respuestas: Filtra el campo password de todas
+   las respuestas que devuelvan datos de usuario.
+
+6. MEDIA - Sin validacion de input: Anade validacion al POST /api/products:
+   nombre requerido, precio debe ser numero positivo, stock debe ser entero >= 0.
+
+7. MEDIA - GET usuarios sin autorizacion: Anade verificacion de que solo
+   usuarios admin pueden listar todos los usuarios.
+
+8. MEDIA - Sin verificacion de stock: Al crear un pedido, verifica que
+   haya suficiente stock del producto antes de confirmarlo.
+
+Ademas:
+- Actualiza los tests existentes para que funcionen con los cambios
+- Anade tests nuevos para la validacion de input y el hasheo de passwords
+- Asegurate de que npm test pase al final
+
+Hazlo paso a paso. Despues de cada archivo, explicame brevemente que cambiaste.
+```
+
+#### Que veras durante la demo
+
+- Claude leyendo los archivos afectados para entender el contexto
+- Instalando dependencias (`bcrypt`, `dotenv`) pidiendo permiso
+- Modificando 4-5 archivos de forma coordinada
+- Creando el archivo `.env` con el secret
+- Actualizando tests existentes y creando nuevos
+- Ejecutando `npm test` para verificar que todo pasa
+
+#### Archivos que se modifican
+
+| Archivo | Cambios |
+|---------|---------|
+| `src/middleware/auth.js` | Leer JWT secret de env var en vez de hardcoded |
+| `src/routes/users.js` | Hashear passwords con bcrypt, filtrar passwords de respuestas |
+| `src/routes/products.js` | Eliminar `new Function()`, agregar validacion, proteger DELETE |
+| `src/routes/orders.js` | Verificar stock antes de crear pedido |
+| `.env` | Nuevo archivo con JWT_SECRET |
+| `tests/products.test.js` | Actualizar tests existentes + nuevos tests de validacion |
+
+#### Puntos clave para observar
+
+- **Un solo prompt, multiples archivos**: Claude trabaja de forma sistematica a traves del codebase.
+- **Pide permiso**: Observa como Claude pide permiso para instalar dependencias con npm.
+- **Contexto cruzado**: Claude entiende que cambiar `auth.js` afecta a los archivos que lo importan.
+- **Tests al final**: La verificacion automatica confirma que nada se rompio.
+
+#### Ejercicio para participantes (si hay tiempo)
+
+Si quieres seguir la demo en tu propia maquina:
+1. Asegurate de estar en `sample-project/` con Claude Code en modo normal (no Plan Mode).
+2. Copia el prompt de arriba.
+3. Deja que Claude trabaje. Si pide permiso para instalar paquetes, acepta.
+4. Al final, verifica con `npm test`.
+
+**Nota**: Si Claude tarda demasiado o se atasca, no te preocupes. El instructor tiene los cambios pre-preparados.
+
+#### Problemas comunes
+
+- **Claude hace demasiados cambios**: Se especifico. Si modifica archivos que no deberia, dile: "Solo modifica los archivos que te indique."
+- **npm test falla despues de los cambios**: Pidele a Claude que lea el error y lo arregle: "Los tests fallan con este error: [error]. Arreglalo."
+- **bcrypt no se instala**: En algunos sistemas, bcrypt requiere herramientas de compilacion. Alternativa: usa `bcryptjs` en lugar de `bcrypt`.
+
+---
+
+## Bloque 3: Crear un Pull Request
+
+**Duracion**: 15 minutos (5 min demo + 10 min ejercicio)
+**Dificultad**: ⭐⭐
+**Audiencia**: Todos los participantes
+
+### Contexto: Claude Code y Git
+
+Claude Code tiene integracion nativa con Git y GitHub. Puede:
+
+- Crear ramas, hacer commits y pushear cambios.
+- Crear Pull Requests con titulo y descripcion formateada.
+- Revisar PRs existentes y dar feedback.
+- Explicar cambios en un PR en lenguaje no tecnico.
+
+---
+
+### Demo del instructor (5 min)
+
+Despues del security hardening, el instructor pedira a Claude que empaquete todo el trabajo en un PR:
+
+```
+Crea una nueva rama llamada security/hardening-workshop.
+Haz commit de todos los cambios con un mensaje descriptivo en espanol.
+Luego crea un Pull Request hacia la rama principal con:
+- Un titulo claro y conciso
+- Una descripcion que explique las 8 vulnerabilidades que se arreglaron
+- Una seccion "Como probar" con instrucciones paso a paso
+- Una seccion "Para revisores no tecnicos" que explique el impacto en lenguaje llano
+
+Pushea y crea el PR.
+```
+
+**Observa como Claude**:
+1. Crea la rama con `git checkout -b`
+2. Hace `git add` de los archivos modificados
+3. Escribe un commit message descriptivo
+4. Pushea con `git push -u origin`
+5. Crea el PR con `gh pr create` y una descripcion rica en Markdown
+
+El instructor abrira la URL del PR en el navegador para mostrar el resultado.
+
+---
+
+### Ejercicio 3.1: Crea tu propio PR
+
+**Objetivo**: Crear una rama, hacer un cambio, commitear y crear un PR usando Claude Code.
 
 **Tiempo**: 10 minutos
 
 #### Instrucciones
 
-1. Sigue en el directorio `sample-project/` con Claude Code abierto.
-
-2. Puedes quedarte en Plan Mode o cambiar al modo normal (si quieres que Claude cree el archivo de documentacion).
-
-3. Escribe el siguiente prompt:
-   ```
-   Genera documentacion tecnica completa para este proyecto en formato Markdown.
-   La documentacion debe incluir:
-
-   1. Descripcion general del proyecto
-   2. Requisitos y como instalar
-   3. Estructura del proyecto (arbol de archivos explicado)
-   4. Documentacion de cada endpoint de la API:
-      - Metodo HTTP y ruta
-      - Parametros requeridos
-      - Ejemplo de request y response
-      - Codigos de error
-   5. Modelo de datos (estructura de los JSON)
-   6. Autenticacion: como funciona, como obtener un token
-   7. Variables de entorno necesarias
-
-   Crea el archivo como docs/API.md
+1. Asegurate de estar en el directorio raiz del workshop:
+   ```bash
+   cd claude_workshop_march26
+   claude
    ```
 
-4. Revisa la documentacion generada. Verifica que:
-   - Los endpoints estan correctamente documentados.
-   - Los ejemplos de request/response son realistas.
-   - La estructura es clara y navegable.
-
-5. Si algo falta o es incorrecto, pidele que lo corrija:
+2. Pide a Claude que cree una rama de trabajo:
    ```
-   El endpoint POST /api/products requiere autenticacion pero no lo mencionaste.
-   Corrige esa seccion.
+   Crea una nueva rama llamada feature/workshop-[tu-nombre]
+   a partir de la rama principal
    ```
 
-#### Resultado esperado
+3. Pide un cambio concreto. Elige una opcion:
 
-Un archivo `docs/API.md` con documentacion profesional que incluya:
+   **Opcion A** (si seguiste el Bloque 2):
+   ```
+   Haz commit de los cambios del security hardening y crea un PR
+   con titulo y descripcion descriptivos en espanol.
+   ```
 
-- Tabla de contenidos navegable.
-- Cada endpoint documentado con ejemplos de curl o similar.
-- Modelo de datos claro.
-- Instrucciones de autenticacion paso a paso.
+   **Opcion B** (cambio mas sencillo):
+   ```
+   En sample-project/src/routes/products.js, anade validacion de entrada
+   para el endpoint POST: el nombre no debe estar vacio y el precio debe
+   ser un numero positivo. Luego haz commit y crea un PR.
+   ```
+
+4. Revisa el PR creado en GitHub (Claude te dara la URL).
 
 #### Para personas de producto
 
-Este es un caso de uso muy practico: generar documentacion que antes requeria horas de trabajo de un desarrollador. La clave esta en ser especifico con lo que necesitas. Cuanto mas detallado tu prompt, mejor el resultado.
+Aunque no necesites crear PRs, observa lo facil que es el flujo. Prueba esto despues:
+```
+Muestrame los ultimos PRs y explicame cada uno como si fuera para
+las release notes del producto.
+```
+
+O pide a Claude que revise el PR de un companero:
+```
+Revisa el Pull Request #[numero] y explicamelo como si fuera un
+product manager. Dime que cambia para el usuario final y si hay riesgo.
+```
 
 #### Problemas comunes
 
-- **La documentacion tiene errores en los endpoints**: Claude a veces inventa endpoints que no existen. Siempre verifica contra el codigo real.
-- **No crea el archivo**: Si estas en Plan Mode, Claude no puede crear archivos. Cambia al modo normal con `Shift+Tab`.
-- **El formato Markdown se ve mal**: Pidele que use una estructura especifica: "Usa tablas para los parametros y bloques de codigo para los ejemplos".
-
-#### Para saber mas
-
-- [Generacion de documentacion con Claude Code](https://docs.anthropic.com/en/docs/claude-code/common-tasks)
-- [Markdown Guide](https://www.markdownguide.org/)
+- **"No tienes permiso para pushear"**: Necesitas acceso de escritura al repositorio. Verifica tu configuracion SSH/HTTPS con GitHub.
+- **"La rama ya existe"**: Usa un nombre unico: `feature/workshop-[tu-nombre]-[timestamp]`.
+- **Claude modifica archivos que no deberia**: Se especifico: "Solo modifica el archivo X."
 
 ---
 
-## Bloque 3: Skills — El superpoder compartido
+## Bloque 4: Skills — La Nueva Gran Evolucion
 
-**Duracion**: 30 minutos
+**Duracion**: 30 minutos (5 min concepto + 5 min demo + 15 min hands-on + 5 min revelacion)
 **Dificultad**: ⭐⭐⭐
 **Audiencia**: Todos los participantes
 
-### Contexto: Que son los Skills
+### El problema
+
+Acabamos de gastar 25 minutos haciendo un security audit y hardening. Fue impresionante. Pero preguntate: **que pasa la proxima semana cuando otro desarrollador suba codigo?** Hace el mismo analisis? Sigue los mismos criterios? Probablemente no.
+
+Los Skills resuelven esto.
+
+### Que son los Skills
 
 Los Skills son **instrucciones reutilizables** que le dicen a Claude como hacer una tarea especifica. Piensa en ellos como recetas o plantillas de comportamiento.
 
-Un Skill es simplemente un archivo Markdown (`.md`) guardado en la carpeta `.claude/skills/` de tu proyecto. Cuando invocas un Skill, Claude lee esas instrucciones y las sigue al pie de la letra.
-
-**Por que son importantes:**
-
-- **Consistencia**: Todo el equipo obtiene el mismo resultado para la misma tarea.
-- **Reutilizacion**: Escribes las instrucciones una vez, las usas para siempre.
-- **Compartibilidad**: Como viven en el repo, cualquiera del equipo puede usarlos.
-- **No requieren codigo**: Cualquier persona puede crear un Skill escribiendo instrucciones en lenguaje natural.
-
-**Estructura de un Skill:**
+Un Skill es simplemente un archivo Markdown guardado en `.claude/skills/` de tu proyecto:
 
 ```
 .claude/skills/
@@ -326,72 +428,66 @@ Un Skill es simplemente un archivo Markdown (`.md`) guardado en la carpeta `.cla
     SKILL.md          # Las instrucciones que Claude seguira
 ```
 
-El archivo `SKILL.md` tipicamente contiene:
+**Por que son importantes:**
 
-- Una descripcion de que hace el Skill.
-- Instrucciones paso a paso.
-- El formato de salida esperado.
-- Ejemplos (opcionales pero recomendados).
+- **Consistencia**: Todo el equipo obtiene el mismo resultado para la misma tarea.
+- **Reutilizacion**: Escribes las instrucciones una vez, las usas para siempre.
+- **Compartibilidad**: Viven en el repo, cualquiera del equipo puede usarlos via Git.
+- **No requieren codigo**: Cualquier persona puede crear un Skill escribiendo instrucciones en lenguaje natural.
 
 **Como invocar un Skill:**
 
-Dentro de Claude Code, usas el comando:
+Dentro de Claude Code, usa el comando:
 ```
-/skill-name
+/nombre-del-skill
 ```
 
-O puedes referirte al Skill en tu prompt:
+O referencialo en tu prompt:
 ```
-Usa el skill de code-review para revisar el archivo src/routes/auth.js
+Usa el skill de code-review para revisar el archivo src/routes/orders.js
 ```
 
 ---
 
-### Ejercicio 3.0: Explorar los Skills existentes
+### Demo: Skills en accion (5 min)
 
-**Objetivo**: Familiarizarte con los Skills incluidos en el repositorio del workshop.
+#### 1. Explorar los Skills existentes
 
-**Tiempo**: 5 minutos
+```
+Muestrame que skills hay disponibles en .claude/skills/ y explicame
+que hace cada uno en una tabla.
+```
 
-#### Instrucciones
-
-1. Regresa al directorio raiz del workshop:
-   ```bash
-   cd claude_workshop_march26
-   claude
-   ```
-
-2. Explora los Skills existentes:
-   ```
-   Muestrame que skills hay disponibles en .claude/skills/ y explicame
-   que hace cada uno en una tabla.
-   ```
-
-3. Prueba uno de los Skills existentes. Por ejemplo, el de code review:
-   ```
-   Usa el skill de code-review para revisar el archivo
-   sample-project/src/routes/auth.js
-   ```
-
-4. Observa como la salida sigue un formato estructurado y consistente, definido por el Skill.
-
-#### Resultado esperado
-
-Deberas ver los Skills disponibles en el repositorio:
-
+El repositorio incluye 4 Skills:
 - **code-review**: Revisa codigo buscando bugs, seguridad y buenas practicas.
 - **product-spec**: Genera especificaciones de producto a partir de una idea.
 - **meeting-prep**: Prepara agendas y materiales para reuniones.
+- **release-notes**: Genera release notes para usuarios finales.
 
-Al usar el Skill de code-review, la salida deberia seguir un formato estandar con secciones como: Resumen, Problemas criticos, Sugerencias de mejora, Veredicto.
+#### 2. Usar el Skill de code-review
+
+```
+Usa el skill de code-review para revisar sample-project/src/routes/orders.js
+```
+
+Observa la salida estructurada: secciones de Pasa/Advertencias/Debe corregir, puntuaciones, formato consistente.
+
+#### 3. Usar un Skill no-tecnico
+
+```
+Usa el skill de meeting-prep para preparar una reunion sobre prioridades
+de producto del Q2 basandote en cowork-workspace/notas/reunion-producto-15mar.txt
+```
+
+Observa como genera una agenda estructurada con bloques de tiempo y puntos de discusion. **Un PM podria escribir y usar esto sin saber programar.**
 
 ---
 
-### Ejercicio 3.1: Crea tu propio Skill (EJERCICIO PRINCIPAL)
+### Ejercicio 4.1: Crea tu propio Skill (EJERCICIO PRINCIPAL)
 
 **Objetivo**: Cada participante crea un Skill adaptado a su perfil profesional.
 
-**Tiempo**: 20 minutos
+**Tiempo**: 15 minutos
 
 Elige la pista que mejor se ajuste a tu rol:
 
@@ -399,16 +495,11 @@ Elige la pista que mejor se ajuste a tu rol:
 
 #### Pista A: Desarrolladores — Skill de generacion de tests
 
-**Objetivo**: Crear un Skill que genere tests automatizados para cualquier archivo de codigo.
+**Objetivo**: Crear un Skill que genere tests automatizados para cualquier archivo.
 
 ##### Instrucciones
 
-1. Crea la estructura de carpetas para tu Skill:
-   ```
-   Crea el directorio .claude/skills/test-generator/ con un archivo SKILL.md
-   ```
-
-2. El contenido de tu `SKILL.md` debe incluir estas instrucciones para Claude. Puedes escribirlas tu o pedirle a Claude que te ayude:
+1. Pide a Claude que cree el Skill:
    ```
    Crea un skill en .claude/skills/test-generator/SKILL.md con las siguientes
    caracteristicas:
@@ -429,33 +520,27 @@ Elige la pista que mejor se ajuste a tu rol:
    - Incluye un ejemplo de como se ve un test generado por este skill
    ```
 
-3. Verifica que el Skill se creo correctamente:
+2. Verifica que se creo:
    ```
    Muestrame el contenido de .claude/skills/test-generator/SKILL.md
    ```
 
-4. Prueba tu Skill con un archivo del proyecto:
+3. Pruebalo:
    ```
-   Usa el skill test-generator para generar tests del archivo
+   Usa el skill test-generator para generar tests de
    sample-project/src/routes/products.js
    ```
 
-5. Ejecuta los tests generados para ver si pasan:
+4. Ejecuta los tests:
    ```
    Ejecuta los tests que acabas de generar
    ```
-
-##### Resultado esperado
-
-- Un archivo `.claude/skills/test-generator/SKILL.md` con instrucciones claras.
-- Tests generados que cubren multiples escenarios.
-- Los tests deberian pasar (o al menos compilar sin errores de sintaxis).
 
 ---
 
 #### Pista B: Product Managers — Skill de release notes
 
-**Objetivo**: Crear un Skill que analice los commits o PRs recientes y genere release notes orientadas al usuario final.
+**Objetivo**: Crear un Skill que genere release notes en lenguaje no tecnico.
 
 ##### Instrucciones
 
@@ -465,48 +550,31 @@ Elige la pista que mejor se ajuste a tu rol:
    caracteristicas:
 
    - Nombre: Release Notes Generator
-   - Proposito: Analizar cambios recientes en el repositorio y generar
-     release notes en lenguaje no tecnico
+   - Proposito: Generar release notes en lenguaje no tecnico
    - El skill debe:
      1. Revisar los commits recientes o el diff de un PR
-     2. Clasificar cada cambio en categorias:
-        - Nuevas funcionalidades
-        - Mejoras
-        - Correcciones de bugs
-        - Cambios internos (no visibles al usuario)
-     3. Para cada cambio visible al usuario, escribir una descripcion
-        en lenguaje llano que un usuario final pueda entender
-     4. Ignorar cambios puramente tecnicos (refactoring, actualizacion
-        de dependencias) a menos que impacten al usuario
+     2. Clasificar cambios en: Nuevas funcionalidades, Mejoras,
+        Correcciones de bugs, Cambios internos
+     3. Escribir descripciones que un usuario final entienda
+     4. Ignorar cambios puramente tecnicos (refactoring, dependencias)
      5. Sugerir un titulo llamativo para la release
-   - Formato de salida: Markdown con secciones por categoria
-   - Tono: Profesional pero accesible, como un blog de producto
+   - Formato: Markdown con secciones por categoria
+   - Tono: Profesional pero accesible
    - Incluye un ejemplo de salida con 3-4 cambios ficticios
    ```
 
-2. Verifica el Skill:
+2. Pruebalo:
    ```
-   Muestrame el contenido de .claude/skills/release-notes/SKILL.md
+   Usa el skill release-notes para generar notas de lanzamiento
+   basandote en los archivos del sample-project/. Imagina que esta
+   es la version 1.0.0.
    ```
-
-3. Prueba tu Skill (incluso sin commits reales, puedes simular):
-   ```
-   Usa el skill release-notes para generar las notas de lanzamiento
-   basandote en los archivos actuales del proyecto sample-project/.
-   Imagina que esta es la version 1.0.0 y estos son todos los features nuevos.
-   ```
-
-##### Resultado esperado
-
-- Un archivo `.claude/skills/release-notes/SKILL.md` con instrucciones completas.
-- Release notes generadas con lenguaje amigable para el usuario final.
-- Las notas deberian estar organizadas por categoria y ser comprensibles sin conocimientos tecnicos.
 
 ---
 
 #### Pista C: Power Users — Skill de resumen de documentos
 
-**Objetivo**: Crear un Skill que resuma documentos largos y extraiga los puntos clave de accion.
+**Objetivo**: Crear un Skill que resuma documentos y extraiga action items.
 
 ##### Instrucciones
 
@@ -516,90 +584,92 @@ Elige la pista que mejor se ajuste a tu rol:
    caracteristicas:
 
    - Nombre: Document Summarizer
-   - Proposito: Resumir documentos largos y extraer action items
+   - Proposito: Resumir documentos y extraer action items
    - El skill debe:
-     1. Leer el documento o documentos proporcionados
-     2. Generar un resumen ejecutivo (maximo 5 oraciones)
-     3. Extraer los puntos clave (bullet points)
-     4. Identificar decisiones tomadas (si las hay)
-     5. Listar action items con responsables (si se mencionan)
-     6. Senalar preguntas abiertas o temas sin resolver
+     1. Leer los documentos proporcionados
+     2. Generar resumen ejecutivo (maximo 5 oraciones)
+     3. Extraer puntos clave (bullet points)
+     4. Identificar decisiones tomadas
+     5. Listar action items con responsables
+     6. Senalar preguntas abiertas
      7. Sugerir proximos pasos
-   - Formato de salida: Markdown estructurado con secciones claras
+   - Formato: Markdown estructurado
    - Tono: Profesional y conciso
-   - Funciona con: actas de reunion, documentos de estrategia,
-     reportes, emails largos
-   - Incluye un ejemplo de salida basado en un acta de reunion ficticia
+   - Incluye un ejemplo basado en un acta de reunion ficticia
    ```
 
-2. Verifica el Skill:
+2. Pruebalo:
    ```
-   Muestrame el contenido de .claude/skills/doc-summarizer/SKILL.md
+   Usa el skill doc-summarizer para resumir las notas en
+   cowork-workspace/notas/reunion-producto-15mar.txt
    ```
-
-3. Prueba tu Skill con contenido del workshop:
-   ```
-   Usa el skill doc-summarizer para resumir el archivo README.md
-   del repositorio principal
-   ```
-
-##### Resultado esperado
-
-- Un archivo `.claude/skills/doc-summarizer/SKILL.md` con instrucciones detalladas.
-- Un resumen del README que incluya los puntos clave del workshop.
-- Action items o proximos pasos claramente listados.
 
 ---
 
-### Verificacion del ejercicio (todas las pistas)
+### Verificacion (todas las pistas)
 
-Para confirmar que tu Skill funciona correctamente, verifica:
-
-- El archivo `SKILL.md` existe en la ruta correcta dentro de `.claude/skills/`.
+- El archivo `SKILL.md` existe en `.claude/skills/[nombre]/SKILL.md`.
 - Las instrucciones son claras y no ambiguas.
-- El Skill produce una salida consistente cada vez que lo invocas.
-- Otra persona de tu equipo podria usarlo sin explicacion adicional.
+- El Skill produce salida consistente cada vez que lo invocas.
+- Otra persona podria usarlo sin explicacion adicional.
 
-### Ejercicio 3.2: Itera y mejora tu Skill
+### Ejercicio 4.2: Itera y mejora tu Skill
 
 **Tiempo**: 5 minutos
 
 1. Revisa la salida de tu Skill. Identifica algo que mejorar.
-
 2. Pidele a Claude que lo refine:
    ```
    Mejora el skill [nombre] para que tambien incluya [lo que falta].
    Actualiza el archivo SKILL.md.
    ```
+3. Vuelve a probar y compara.
 
-3. Vuelve a probar y compara la salida.
+---
 
-4. Si tienes tiempo, prueba el Skill de un companero. Comparen resultados.
+### La revelacion: por que esto cambia todo (5 min)
+
+Los Skills viven en `.claude/skills/` — que esta **dentro de tu repositorio Git**.
+
+Esto significa:
+
+1. **Cuando haces push**, todo el equipo obtiene tus Skills.
+2. **Cuando alguien nuevo se une**, hereda la experiencia acumulada del equipo desde el dia 1.
+3. **Son versionados**: puedes ver quien creo un Skill, cuando, y como ha evolucionado.
+4. **Son revisables**: puedes abrir un PR para proponer un nuevo Skill y el equipo lo revisa.
+5. **Son iterables**: si la salida no es perfecta, mejoras las instrucciones y toda la ejecucion futura es mejor.
+
+**El flujo de compartir un Skill:**
+1. Alguien crea o mejora un Skill en su rama.
+2. Abre un PR — el equipo revisa las instrucciones.
+3. Se mergea — todos tienen acceso inmediato.
+4. El conocimiento institucional crece con cada iteracion.
+
+**Personal vs Proyecto**: Los Skills en `.claude/skills/` son del proyecto. Tambien puedes crear Skills personales en `~/.claude/skills/` que solo tu usas. Consulta la [guia de Skills](guides/skills-guide.md) para mas detalles.
 
 #### Problemas comunes
 
-- **Claude no encuentra el Skill**: Asegurate de que la ruta sea exactamente `.claude/skills/nombre-del-skill/SKILL.md`. El archivo debe llamarse `SKILL.md` en mayusculas.
-- **La salida es inconsistente**: Anade mas ejemplos al Skill. Los ejemplos son la mejor forma de definir el formato esperado.
-- **El Skill es demasiado generico**: Se mas especifico en las instrucciones. En lugar de "resume el documento", especifica cuantos puntos, que tipo de informacion extraer, que formato usar.
-- **No se como empezar a escribir**: Pidele a Claude que te ayude. Escribe: "Ayudame a crear un skill para [tu caso de uso]. Hazme preguntas para entender que necesito."
+- **Claude no encuentra el Skill**: La ruta debe ser exactamente `.claude/skills/nombre/SKILL.md`. El archivo debe llamarse `SKILL.md` en mayusculas.
+- **La salida es inconsistente**: Anade mas ejemplos al Skill. Los ejemplos definen el formato esperado.
+- **El Skill es demasiado generico**: Se mas especifico. En lugar de "resume el documento", especifica cuantos puntos, que formato, que nivel de detalle.
+- **No se como empezar**: Pide ayuda a Claude: "Ayudame a crear un skill para [caso de uso]. Hazme preguntas."
 
 #### Para saber mas
 
 - [Guia completa de Skills](guides/skills-guide.md)
 - [Documentacion oficial de Skills](https://docs.anthropic.com/en/docs/claude-code/skills)
-- [Mejores practicas para escribir prompts](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering)
 
 ---
 
-## Bloque 4: Claude Cowork — Para toda la organizacion
+## Bloque 5: Cowork — Mas Alla del Codigo
 
-**Duracion**: 25 minutos
+**Duracion**: 15 minutos (10 min demos + 5 min exploracion)
 **Dificultad**: ⭐⭐
 **Audiencia**: Todos (foco en producto y power users)
 
 ### Contexto: Que es Claude Cowork
 
-Claude Cowork es Claude con superpoderes de escritorio. A diferencia de Claude Chat (que solo puede conversar), Cowork puede:
+Claude Cowork es Claude con superpoderes de escritorio. A diferencia de Claude Chat (que solo conversa), Cowork puede:
 
 - **Leer y escribir archivos** en carpetas de tu computadora.
 - **Organizar informacion** dispersa en documentos estructurados.
@@ -607,492 +677,195 @@ Claude Cowork es Claude con superpoderes de escritorio. A diferencia de Claude C
 - **Generar reportes** a partir de datos crudos.
 - **Trabajar con proyectos persistentes** que recuerdan el contexto.
 
-La diferencia clave con Claude Code:
-
 | Aspecto | Claude Code | Claude Cowork |
 |---------|-------------|---------------|
 | Interfaz | Terminal (CLI) | Claude Desktop (GUI) |
 | Publico principal | Desarrolladores | Toda la organizacion |
 | Ejecuta codigo | Si | No directamente |
-| Acceso a archivos | Via terminal | Via seleccion de carpeta |
 | Git integration | Nativa | No |
 | Conectores | No | Google Drive, Gmail, etc. |
 
-**Para este bloque necesitas**: Claude Desktop con Cowork habilitado y la carpeta `cowork-workspace/` del repositorio.
-
-**Nota para desarrolladores**: Si no tienes Cowork, puedes hacer estos ejercicios con Claude Code. Los resultados seran similares; la diferencia es la interfaz.
+**Para este bloque**: Necesitas Claude Desktop con Cowork o, si eres dev, puedes usar Claude Code sobre la misma carpeta.
 
 ---
 
-### Ejercicio 4.1: Organizar notas desordenadas
+### Demo 1: Organizar notas caoticas (4 min)
 
-**Objetivo**: Darle a Cowork una carpeta con notas desordenadas y pedirle que las organice de forma coherente.
+La carpeta `cowork-workspace/notas/` contiene notas desordenadas de la empresa ficticia ClaroPago: actas de reunion, feedback de clientes, ideas de app movil, una llamada con inversores, y una lista personal de pendientes.
 
-**Tiempo**: 8 minutos
+```
+Lee todas las notas en la carpeta notas/. Crea un documento
+notas/RESUMEN-NOTAS.md que:
+1. Agrupe la informacion por tema
+2. Extraiga todos los action items pendientes con responsable
+3. Identifique decisiones tomadas
+4. Senale informacion potencialmente desactualizada
+```
 
-#### Instrucciones
+**Observa**: Cowork lee 5 archivos con formatos dispares, informacion mezclada entre personal y profesional, y produce un documento estructurado.
 
-1. Abre Claude Desktop y selecciona la carpeta `cowork-workspace/` como tu workspace.
+---
 
-2. Explora el contenido de la carpeta `notas/`:
-   ```
-   Que archivos hay en la carpeta notas/? Dame un resumen de cada uno.
-   ```
+### Demo 2: Completar informe trimestral con datos reales (4 min)
 
-3. Pide a Cowork que organice las notas:
-   ```
-   Las notas en la carpeta notas/ estan desordenadas. Necesito que:
+El archivo `informes/borrador-informe-trimestral.md` es un borrador con 11 marcadores `[TODO]` que necesitan datos reales. Esos datos estan dispersos en el CSV de gastos, el analisis de competencia, las notas de reunion, y la llamada con inversores.
 
-   1. Leas todas las notas
-   2. Identifiques los temas principales
-   3. Crees un documento consolidado llamado notas/RESUMEN-NOTAS.md que:
-      - Agrupe las notas por tema
-      - Tenga una tabla de contenidos
-      - Incluya una seccion de "Action items" con todas las tareas
-        pendientes que encuentres en las notas
-      - Marque que informacion podria estar desactualizada
-   ```
+```
+Usando TODA la informacion disponible en esta carpeta (notas, gastos, informes),
+completa el borrador de informe trimestral en informes/borrador-informe-trimestral.md.
+Rellena todos los [TODO] con datos reales extraidos de los otros archivos.
+Incluye:
+- Resumen ejecutivo
+- Metricas completadas con datos reales
+- Analisis de gastos del CSV de marzo
+- Analisis competitivo basado en las notas
+- Riesgos identificados
+```
 
-4. Revisa el documento generado. Verifica que la organizacion tiene sentido.
+**Este es el momento "wow"**: Claude cruza datos de multiples fuentes y formatos para producir un informe completo.
 
-5. Si falta algo, pidele que itere:
-   ```
-   Anade una seccion de "Decisiones tomadas" extrayendo cualquier decision
-   mencionada en las notas originales.
-   ```
+---
 
-#### Resultado esperado
+### Demo 3: Conectores (2 min)
 
-- Un archivo `notas/RESUMEN-NOTAS.md` bien estructurado.
-- Las notas originales agrupadas por tema.
-- Lista clara de action items extraidos de las notas.
-- Tabla de contenidos navegable.
+Mencion rapida de los conectores disponibles:
+
+| Conector | Que permite |
+|----------|-------------|
+| **Google Drive** | Acceder a documentos de Drive desde Cowork |
+| **Gmail** | Leer y resumir hilos de correo |
+| **DocuSign** | Gestionar documentos firmados |
+
+Configuracion: Claude Desktop > Configuracion > Conectores > Autorizar servicios.
+
+---
+
+### Ejercicio para participantes (5 min)
+
+Elige uno de estos:
+
+**Opcion A — Reporte de gastos:**
+```
+Con los datos de la carpeta gastos/, crea un reporte profesional en
+gastos/REPORTE-GASTOS.md con: resumen ejecutivo, desglose por categoria,
+top 5 gastos mas grandes, y recomendaciones para reducir gastos.
+```
+
+**Opcion B — Resumen ejecutivo:**
+```
+Usando toda la informacion en informes/, crea un resumen ejecutivo de
+maximo 800 palabras en informes/RESUMEN-EJECUTIVO.md para el equipo directivo.
+```
 
 #### Con Claude Code (alternativa para devs)
 
-Si usas Claude Code en lugar de Cowork:
 ```bash
 cd claude_workshop_march26/cowork-workspace
 claude
 ```
-Luego usa los mismos prompts. Claude Code accede a los archivos de la misma manera.
+Usa los mismos prompts. Claude Code accede a los archivos igual que Cowork.
 
 #### Problemas comunes
 
-- **Cowork no ve los archivos**: Asegurate de haber seleccionado la carpeta correcta. Deberia ser `cowork-workspace/`, no la raiz del repositorio.
-- **La organizacion no tiene sentido**: Se mas especifico sobre los criterios de agrupacion. Por ejemplo: "Agrupa por proyecto" o "Agrupa por fecha".
-- **Falta contenido**: Verifica que las notas originales tienen contenido. Si la carpeta esta vacia, consulta con el facilitador.
+- **Cowork no ve los archivos**: Verifica que seleccionaste `cowork-workspace/`, no la raiz del repo.
+- **Los numeros no cuadran**: Pidele que verifique: "Suma todos los gastos y confirma que el total es correcto."
+- **El tono es demasiado tecnico**: Pidele: "Reescribelo como si fuera para el CEO."
 
 ---
 
-### Ejercicio 4.2: Crear un reporte de gastos
+## Bloque 6: Tips Avanzados y Cierre
 
-**Objetivo**: Transformar datos crudos de gastos en un reporte financiero organizado.
+**Duracion**: 5 minutos (solo demos, sin ejercicio)
+**Audiencia**: Todos
 
-**Tiempo**: 8 minutos
-
-#### Instrucciones
-
-1. Pide a Cowork que analice los datos de gastos:
-   ```
-   Revisa los archivos en la carpeta gastos/. Que tipo de datos hay
-   y en que formato estan?
-   ```
-
-2. Pide que genere un reporte:
-   ```
-   Con los datos de la carpeta gastos/, crea un reporte de gastos
-   profesional en gastos/REPORTE-GASTOS.md que incluya:
-
-   1. Resumen ejecutivo con el gasto total
-   2. Desglose por categoria (transporte, comida, software, etc.)
-   3. Desglose por mes (si hay datos de varios meses)
-   4. Top 5 gastos individuales mas grandes
-   5. Grafico en formato texto/ASCII que muestre la distribucion
-      por categoria
-   6. Recomendaciones para reducir gastos basandote en los patrones
-      que observas
-   7. Tabla final con todos los gastos ordenados por fecha
-   ```
-
-3. Revisa el reporte. Verifica que los numeros sumen correctamente.
-
-4. Pidele un formato alternativo si lo necesitas:
-   ```
-   Convierte la tabla final del reporte a formato CSV para que pueda
-   importarlo en una hoja de calculo. Guardalo como gastos/gastos-export.csv
-   ```
-
-#### Resultado esperado
-
-- Un archivo `gastos/REPORTE-GASTOS.md` con formato profesional.
-- Totales y subtotales correctos.
-- Grafico ASCII que muestra la distribucion visual.
-- Opcionalmente, un archivo CSV listo para importar.
-
-#### Problemas comunes
-
-- **Los numeros no cuadran**: Claude a veces comete errores aritmeticos. Pidele que verifique: "Suma todos los gastos individuales y confirma que el total coincide con tu resumen."
-- **No reconoce el formato de los datos**: Describele el formato: "Los datos estan en CSV con columnas: fecha, concepto, categoria, monto."
-- **Falta el simbolo de moneda**: Especificale: "Todos los montos estan en euros (EUR)."
+### Este bloque es demostrativo. Observa, toma notas y pregunta.
 
 ---
 
-### Ejercicio 4.3: Generar un resumen ejecutivo
+### 1. Hooks — Automatiza acciones (1 min)
 
-**Objetivo**: A partir de documentos dispersos, crear un resumen ejecutivo coherente que un directivo pueda leer en 2 minutos.
-
-**Tiempo**: 9 minutos
-
-#### Instrucciones
-
-1. Pide a Cowork que explore los informes disponibles:
-   ```
-   Revisa todos los archivos en la carpeta informes/.
-   De que trata cada documento? Dame un inventario.
-   ```
-
-2. Genera el resumen ejecutivo:
-   ```
-   Necesito un resumen ejecutivo para el equipo directivo.
-   Usando toda la informacion en informes/, crea un documento
-   informes/RESUMEN-EJECUTIVO.md que:
-
-   1. No supere las 2 paginas impresas (aproximadamente 800 palabras)
-   2. Empiece con los 3 puntos mas importantes (formato "lo que debes saber")
-   3. Incluya metricas clave en una tabla facil de leer
-   4. Resuma el estado de cada proyecto o iniciativa mencionada
-   5. Identifique riesgos o banderas rojas
-   6. Termine con las 3 decisiones mas urgentes que necesitan aprobacion
-
-   El tono debe ser ejecutivo: directo, sin jerga tecnica, orientado a la accion.
-   ```
-
-3. Revisa el resumen. Verifica que:
-   - Es realmente conciso (no mas de 800 palabras).
-   - Un directivo sin contexto previo podria entenderlo.
-   - Las metricas y datos son precisos respecto a los documentos originales.
-
-4. Pidele una mejora especifica:
-   ```
-   Anade un semaforo (verde/amarillo/rojo) al lado de cada proyecto
-   basandote en su estado actual. Usa texto en lugar de emojis:
-   [VERDE], [AMARILLO], [ROJO].
-   ```
-
-#### Resultado esperado
-
-- Un archivo `informes/RESUMEN-EJECUTIVO.md` conciso y profesional.
-- Maximo 800 palabras con la informacion mas critica.
-- Tabla de metricas clave.
-- Secciones de riesgos y decisiones pendientes.
-- Semaforos de estado para cada proyecto.
-
-### Proyectos persistentes en Cowork
-
-Una funcionalidad clave de Cowork es la capacidad de crear **Proyectos**: espacios de trabajo que mantienen el contexto entre sesiones.
-
-Para crear un Proyecto:
-1. En Claude Desktop, busca la opcion "Proyectos" o "Projects".
-2. Crea un nuevo proyecto y asignale la carpeta `cowork-workspace/`.
-3. Dale un nombre descriptivo como "Workshop - Datos de equipo".
-4. En la siguiente sesion, cuando abras este Proyecto, Claude recordara el contexto previo.
-
-Esto es muy util para tareas recurrentes como reportes semanales, seguimiento de proyectos o preparacion de reuniones periodicas.
-
-#### Problemas comunes
-
-- **El resumen es demasiado largo**: Se explicito con el limite de palabras. Anade: "Esto es critico: no mas de 800 palabras."
-- **Falta informacion clave**: Indicale que documentos son prioritarios: "El informe de ventas y el de satisfaccion del cliente son los mas importantes."
-- **El tono es demasiado tecnico**: Pidele: "Reescribelo como si fuera para el CEO, que no tiene background tecnico."
-
-#### Para saber mas
-
-- [Guia de Cowork](guides/cowork-guide.md)
-- [Documentacion de Cowork](https://support.claude.com/en/articles/13345190-get-started-with-cowork)
-- [Conectores de Cowork (Drive, Gmail)](https://support.claude.com/en/articles/13345190-get-started-with-cowork)
-
----
-
-## Bloque 5: GitHub Integration
-
-**Duracion**: 15 minutos
-**Dificultad**: ⭐⭐
-**Audiencia**: Todos los participantes
-
-### Contexto: Claude Code y Git
-
-Claude Code tiene integracion nativa con Git y GitHub. Puede:
-
-- Crear ramas, hacer commits y pushear cambios.
-- Crear Pull Requests con titulo y descripcion.
-- Revisar PRs existentes y dar feedback.
-- Explicar cambios en un PR en lenguaje no tecnico.
-
-Esto es util para:
-- **Desarrolladores**: Automatizar el flujo de Git sin salir de Claude.
-- **Product Managers**: Entender que cambios trae un PR sin leer codigo.
-- **Cualquier persona**: Revisar el historial del proyecto.
-
----
-
-### Ejercicio 5.1: Flujo completo de Git con Claude Code
-
-**Objetivo**: Crear una rama, hacer un cambio, commitear y crear un PR, todo usando Claude Code como intermediario.
-
-**Tiempo**: 10 minutos
-
-#### Instrucciones
-
-1. Asegurate de estar en el directorio raiz del workshop con Claude Code:
-   ```bash
-   cd claude_workshop_march26
-   claude
-   ```
-
-2. Pide a Claude que cree una rama de trabajo:
-   ```
-   Crea una nueva rama llamada feature/workshop-[tu-nombre]
-   a partir de la rama principal
-   ```
-
-3. Pide un cambio concreto en el proyecto:
-   ```
-   En el archivo sample-project/src/routes/products.js, anade
-   validacion de entrada para el endpoint POST que crea productos.
-   El nombre del producto no debe estar vacio y el precio debe ser
-   un numero positivo. Si la validacion falla, retorna un error 400
-   con un mensaje descriptivo.
-   ```
-
-4. Pide que haga commit y cree el PR:
-   ```
-   Haz commit de los cambios con un mensaje descriptivo en espanol.
-   Luego crea un Pull Request hacia la rama principal con:
-   - Titulo claro
-   - Descripcion que explique que se cambio y por que
-   - Una seccion de "Como probar" con instrucciones
-   ```
-
-5. Revisa el PR creado en GitHub (Claude te dara la URL).
-
-#### Resultado esperado
-
-- Una nueva rama creada con tu nombre.
-- Codigo de validacion anadido al endpoint de productos.
-- Un commit con mensaje descriptivo.
-- Un Pull Request en GitHub con titulo, descripcion y seccion de testing.
-
-#### Para personas de producto
-
-Aunque no necesites crear PRs tu misma, observa lo facil que es el flujo. En tu dia a dia podrias pedirle a Claude Code:
-```
-Muestrame los ultimos 5 PRs mergeados y explicame cada uno
-como si fuera para las release notes del producto.
-```
-
-#### Problemas comunes
-
-- **"No tienes permiso para pushear"**: Necesitas tener acceso de escritura al repositorio. Verifica tu configuracion de SSH/HTTPS con GitHub.
-- **"La rama ya existe"**: Usa un nombre unico: `feature/workshop-[tu-nombre]-[fecha]`.
-- **Claude modifica archivos que no deberia**: Se especifico: "Solo modifica el archivo X. No toques nada mas."
-
----
-
-### Ejercicio 5.2: Revisar un PR con Claude Code
-
-**Objetivo**: Usar Claude Code para revisar un Pull Request y entender los cambios, sea cual sea tu nivel tecnico.
-
-**Tiempo**: 5 minutos
-
-#### Instrucciones
-
-1. Pide a Claude que revise un PR (usa el de un companero o el que acabas de crear):
-   ```
-   Revisa el Pull Request #[numero] y dame:
-   1. Un resumen de los cambios en lenguaje no tecnico
-   2. Si eres dev: posibles bugs, problemas de seguridad y sugerencias
-   3. Una valoracion general: debemos aprobar o pedir cambios?
-   ```
-
-2. Si eres de producto, prueba esta variante:
-   ```
-   Revisa el Pull Request #[numero] y explicamelo como si fuera
-   un product manager que necesita decidir si este cambio esta listo
-   para produccion. No uses jerga tecnica. Dime:
-   - Que cambia para el usuario final
-   - Hay algun riesgo
-   - Necesitamos actualizar la documentacion del producto
-   ```
-
-3. Compara tu revision con la de un companero. Discutan las diferencias.
-
-#### Resultado esperado
-
-- Resumen claro y comprensible de los cambios del PR.
-- Para devs: analisis tecnico con bugs potenciales y sugerencias.
-- Para producto: explicacion en lenguaje llano de impacto al usuario.
-
-#### Problemas comunes
-
-- **Claude no encuentra el PR**: Verifica que el numero de PR es correcto y que estas en el repositorio correcto.
-- **La revision es muy superficial**: Pidele que sea mas detallado: "Revisa linea por linea y busca especificamente errores de logica y vulnerabilidades de seguridad."
-- **No tienes PRs disponibles**: Usa el PR que creaste en el Ejercicio 5.1 o pide a un companero su numero de PR.
-
-#### Para saber mas
-
-- [Git con Claude Code](https://docs.anthropic.com/en/docs/claude-code/common-tasks#git-operations)
-- [GitHub CLI (gh)](https://cli.github.com/)
-- [Guia de Pull Requests](https://docs.github.com/en/pull-requests)
-
----
-
-## Bloque 6: Tips avanzados y cierre
-
-**Duracion**: 15 minutos
-**Dificultad**: ⭐⭐⭐⭐ (solo demos, no hay ejercicio practico)
-**Audiencia**: Todos los participantes
-
-### Este bloque es solo demostrativo. Observa, toma notas y pregunta.
-
----
-
-### Demo 6.1: Hooks — Automatiza acciones en Claude Code
-
-Los Hooks son acciones automaticas que se disparan en ciertos momentos del flujo de Claude Code. Son como los Git hooks, pero para Claude.
-
-**Ejemplo**: Un hook que ejecuta el linter automaticamente cada vez que Claude modifica un archivo:
+Los Hooks son acciones automaticas que se disparan durante el flujo de Claude Code:
 
 ```json
 // .claude/settings.json
 {
   "hooks": {
-    "afterEdit": {
-      "command": "npx eslint --fix ${file}",
-      "description": "Ejecutar linter despues de cada edicion"
-    }
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[$(date)] Modified: $FILE_PATH' >> .claude/audit.log"
+          }
+        ]
+      }
+    ]
   }
 }
 ```
 
-**Casos de uso practicos:**
-- Ejecutar tests automaticamente despues de cambios en el codigo.
-- Formatear archivos recien creados.
-- Validar que no se suban secretos antes de un commit.
-- Notificar a Slack cuando Claude termina una tarea larga.
+**Casos de uso**: Ejecutar tests despues de cada cambio, formatear archivos, validar que no se suban secretos, notificar a Slack.
 
 ---
 
-### Demo 6.2: Agentes personalizados
+### 2. Permisos por directorio (1 min)
 
-Puedes crear agentes especializados que tienen un proposito y personalidad definidos. Viven en `.claude/agents/`.
+Puedes configurar que Claude tenga diferentes niveles de acceso segun el directorio:
 
-**Ejemplo**: Un agente auditor de seguridad:
-
-```markdown
-# Security Auditor Agent
-
-Eres un auditor de seguridad experimentado. Tu trabajo es:
-
-1. Revisar todo el codigo buscando vulnerabilidades OWASP Top 10
-2. Verificar que no haya secretos hardcodeados
-3. Comprobar que las dependencias no tengan CVEs conocidos
-4. Generar un reporte formal con severidad (critica/alta/media/baja)
-
-Siempre sigue el formato SARIF para tus reportes.
-Nunca modifiques codigo; solo reporta los hallazgos.
+```json
+{
+  "permissions": {
+    "rules": [
+      {
+        "working_directory": "src/core/**",
+        "defaultMode": "plan",
+        "reason": "Logica de negocio critica: solo analisis"
+      },
+      {
+        "working_directory": "tests/**",
+        "defaultMode": "acceptEdits",
+        "reason": "Tests son seguros de modificar"
+      }
+    ]
+  }
+}
 ```
 
-Se invoca con:
-```bash
-claude --agent security-auditor
-```
+Esto protege el codigo critico mientras da libertad en areas seguras.
 
 ---
 
-### Demo 6.3: Pipes de Unix con Claude Code
+### 3. Pipes de Unix (1 min)
 
-Claude Code se integra con pipes de Unix, permitiendo workflows poderosos:
+Claude Code se integra con pipes para workflows poderosos:
 
 ```bash
-# Analizar logs en tiempo real
-tail -f server.log | claude "Resume los errores que veas"
-
-# Procesar salida de comandos
+# Release notes desde commits
 git log --oneline -20 | claude "Genera release notes de estos commits"
 
 # Transformar datos
-cat datos.csv | claude "Convierte esto a JSON y limpia los datos vacios"
+cat datos.csv | claude "Convierte esto a JSON y limpia datos vacios"
 
 # Analizar dependencias
-npm audit --json | claude "Explicame las vulnerabilidades criticas y como arreglarlas"
+npm audit --json | claude "Explicame las vulnerabilidades criticas"
 ```
 
 ---
 
-### Demo 6.4: Conectores de Cowork
+### Recapitulacion: El arco completo (2 min)
 
-Claude Cowork puede conectarse a servicios externos:
+Hoy recorrimos un flujo completo de trabajo con IA:
 
-**Google Drive:**
-- Accede a tus documentos de Drive directamente desde Cowork.
-- Pide: "Resume los ultimos 3 documentos en mi carpeta de proyecto X".
+| Paso | Que hicimos | Herramienta |
+|------|-------------|-------------|
+| **Analizar** | Auditoria de seguridad sin tocar nada | Plan Mode |
+| **Ejecutar** | Arreglar 8 vulnerabilidades multi-archivo | Claude Code |
+| **Enviar** | Crear rama, commit y PR desde terminal | Claude Code + Git |
+| **Automatizar** | Crear Skills reutilizables para el equipo | Skills |
+| **Expandir** | Organizar datos y generar informes de negocio | Cowork |
 
-**Gmail:**
-- Lee y resume hilos de correo.
-- Pide: "Resume los emails no leidos de esta semana y dime cuales requieren accion urgente".
-
-**Configuracion:**
-1. En Claude Desktop, ve a Configuracion > Conectores.
-2. Autoriza los servicios que quieras conectar.
-3. Una vez conectados, Cowork puede acceder a esos datos en tus conversaciones.
-
----
-
-### Tips por rol
-
-#### Para desarrolladores
-
-1. **Usa Plan Mode primero**: Antes de pedirle a Claude que cambie algo, pidele que analice y proponga. Luego decide tu si proceder.
-2. **Crea Skills para tareas repetitivas**: Si haces code review siguiendo los mismos criterios siempre, hazlo un Skill.
-3. **Combina con tu editor**: Claude Code funciona en paralelo con VS Code o tu editor preferido. Usa Claude para cambios grandes y tu editor para ajustes finos.
-4. **Hooks para calidad**: Configura hooks que corran tests y linting automaticamente.
-5. **Agentes para auditorias**: Crea agentes especializados en seguridad, performance, accesibilidad.
-
-#### Para product managers
-
-1. **Plan Mode es tu mejor amigo**: Puedes explorar cualquier codebase sin riesgo de romper nada.
-2. **Skills de release notes**: Crea un Skill que genere release notes automaticamente desde los PRs.
-3. **Cowork para documentacion**: Usa Cowork para mantener specs, roadmaps y reportes actualizados.
-4. **Revisa PRs con Claude**: No necesitas entender el codigo. Claude te explica el impacto al usuario.
-5. **Proyectos persistentes**: Usa Proyectos en Cowork para mantener contexto entre sesiones.
-
-#### Para power users
-
-1. **Empieza con Cowork**: Es la herramienta mas accesible si no vienes del mundo dev.
-2. **Automatiza reportes recurrentes**: Si haces el mismo reporte cada semana, crea un Skill para ello.
-3. **Conecta tus fuentes de datos**: Drive, Gmail, archivos locales. Cuantas mas fuentes, mas potente es Cowork.
-4. **Combina documentos**: La mayor fortaleza de Cowork es sintetizar informacion dispersa en un solo lugar.
-5. **Itera y refina**: Nunca aceptes la primera respuesta. Siempre pide mejoras y ajustes.
-
----
-
-### Preguntas frecuentes
-
-**P: Claude Code es gratis?**
-R: Claude Code usa tu suscripcion de Claude (Pro, Team o Enterprise). No tiene costo adicional, pero consume uso de tu plan.
-
-**P: Mis datos estan seguros?**
-R: Claude Code procesa tu codigo localmente y envia solo el contexto necesario a los servidores de Anthropic. Consulta la [politica de privacidad](https://anthropic.com/privacy) para detalles.
-
-**P: Puedo usar Claude Code sin internet?**
-R: No. Claude Code necesita conexion a internet para comunicarse con los servidores de Anthropic.
-
-**P: Que diferencia hay entre un Skill y un Agente?**
-R: Un Skill es un conjunto de instrucciones para una tarea especifica. Un Agente es una personalidad/rol completo que define como Claude se comporta en general. Los Skills son mas especificos; los Agentes son mas amplios.
-
-**P: Cowork puede acceder a cualquier archivo de mi computadora?**
-R: Solo a los archivos dentro de la carpeta que seleccionas como workspace. Necesita tu permiso explicito.
+Claude trabaja donde tu trabajas: en la terminal, en el escritorio, y en tu flujo de Git.
 
 ---
 
@@ -1100,15 +873,24 @@ R: Solo a los archivos dentro de la carpeta que seleccionas como workspace. Nece
 
 | Recurso | Enlace |
 |---------|--------|
-| Documentacion de Claude Code | [docs.anthropic.com/en/docs/claude-code](https://docs.anthropic.com/en/docs/claude-code) |
+| Documentacion Claude Code | [docs.anthropic.com](https://docs.anthropic.com/en/docs/claude-code) |
 | Guia de Cowork | [support.claude.com](https://support.claude.com/en/articles/13345190-get-started-with-cowork) |
-| Prompt Engineering | [docs.anthropic.com/en/docs/build-with-claude/prompt-engineering](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering) |
-| Claude Code Best Practices | [docs.anthropic.com/en/docs/claude-code/best-practices](https://docs.anthropic.com/en/docs/claude-code/best-practices) |
-| Guia rapida del workshop | [guides/quick-reference.md](guides/quick-reference.md) |
 | Guia de Skills del workshop | [guides/skills-guide.md](guides/skills-guide.md) |
 | Guia de Cowork del workshop | [guides/cowork-guide.md](guides/cowork-guide.md) |
+| Referencia rapida | [guides/quick-reference.md](guides/quick-reference.md) |
 | Soluciones de ejercicios | [solutions/](solutions/) |
+| Skills de ejemplo | [.claude/skills/](.claude/skills/) |
 
----
+### Preguntas frecuentes
 
-> **Gracias por participar en el workshop.** Si tienes preguntas despues del evento, revisa los recursos de arriba o consulta con el equipo facilitador.
+**P: Claude Code es gratis?**
+R: Claude Code usa tu suscripcion de Claude (Pro, Team o Enterprise). No tiene costo adicional, pero consume uso de tu plan.
+
+**P: Mis datos estan seguros?**
+R: Claude Code procesa tu codigo localmente y envia solo el contexto necesario a los servidores de Anthropic. Consulta la [politica de privacidad](https://anthropic.com/privacy).
+
+**P: Que diferencia hay entre un Skill y un Agente?**
+R: Un Skill es un conjunto de instrucciones para una tarea especifica. Un Agente es un rol completo que define como Claude se comporta en general. Los Skills son mas especificos; los Agentes son mas amplios.
+
+**P: Cowork puede acceder a cualquier archivo?**
+R: Solo a los archivos dentro de la carpeta que seleccionas como workspace. Necesita tu permiso explicito.

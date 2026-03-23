@@ -1,35 +1,36 @@
-# Índice del Workshop — Navegación por Perfil
+# Indice del Workshop — Navegacion por Perfil
 
-## Ruta rápida según tu rol
+## Ruta rapida segun tu rol
 
 ### Desarrolladores
-| Paso | Recurso | Descripción |
+| Paso | Recurso | Descripcion |
 |------|---------|-------------|
 | 1 | [README.md](README.md) | Setup y prerequisitos |
-| 2 | [EXERCISES.md — Bloque 2](EXERCISES.md#bloque-2-claude-code--plan-mode-y-exploración-20-min) | Plan Mode sobre el proyecto de ejemplo |
-| 3 | [EXERCISES.md — Bloque 3](EXERCISES.md#bloque-3-skills--el-superpoder-compartido-30-min) | Crear tu propio Skill de desarrollo |
-| 4 | [EXERCISES.md — Bloque 5](EXERCISES.md#bloque-5-github-integration-15-min) | Flujo completo Git + PR |
-| 5 | [Guía de Skills](guides/skills-guide.md) | Referencia completa para crear Skills |
-| 6 | [solutions/](solutions/) | Soluciones de los ejercicios |
+| 2 | [EXERCISES.md — Bloque 1](EXERCISES.md#bloque-1-plan-mode--auditoria-de-seguridad) | Auditoria de seguridad con Plan Mode |
+| 3 | [EXERCISES.md — Bloque 2](EXERCISES.md#bloque-2-trabajo-complejo--security-hardening) | Security hardening multi-archivo |
+| 4 | [EXERCISES.md — Bloque 3](EXERCISES.md#bloque-3-crear-un-pull-request) | Crear PR desde Claude Code |
+| 5 | [EXERCISES.md — Bloque 4](EXERCISES.md#bloque-4-skills--la-nueva-gran-evolucion) | Crear Skill de test-generator |
+| 6 | [Guia de Skills](guides/skills-guide.md) | Referencia completa para crear Skills |
+| 7 | [solutions/](solutions/) | Soluciones de los ejercicios |
 
 ### Product Managers
-| Paso | Recurso | Descripción |
+| Paso | Recurso | Descripcion |
 |------|---------|-------------|
 | 1 | [README.md](README.md) | Setup y prerequisitos |
-| 2 | [Guía de Cowork](guides/cowork-guide.md) | Qué es Cowork y cómo empezar |
-| 3 | [EXERCISES.md — Bloque 3](EXERCISES.md#bloque-3-skills--el-superpoder-compartido-30-min) | Crear tu Skill de producto |
-| 4 | [EXERCISES.md — Bloque 4](EXERCISES.md#bloque-4-claude-cowork--para-toda-la-organización-25-min) | Ejercicios prácticos de Cowork |
-| 5 | [EXERCISES.md — Bloque 5](EXERCISES.md#bloque-5-github-integration-15-min) | Entender PRs sin leer código |
+| 2 | [Guia de Cowork](guides/cowork-guide.md) | Que es Cowork y como empezar |
+| 3 | [EXERCISES.md — Bloque 1](EXERCISES.md#bloque-1-plan-mode--auditoria-de-seguridad) | Observar auditoria (variante PM) |
+| 4 | [EXERCISES.md — Bloque 4](EXERCISES.md#bloque-4-skills--la-nueva-gran-evolucion) | Crear Skill de release-notes |
+| 5 | [EXERCISES.md — Bloque 5](EXERCISES.md#bloque-5-cowork--mas-alla-del-codigo) | Organizar archivos y generar informes |
 | 6 | [solutions/](solutions/) | Soluciones de los ejercicios |
 
 ### Power Users / General
-| Paso | Recurso | Descripción |
+| Paso | Recurso | Descripcion |
 |------|---------|-------------|
 | 1 | [README.md](README.md) | Setup y prerequisitos |
-| 2 | [Guía de Cowork](guides/cowork-guide.md) | Qué es Cowork y cómo empezar |
-| 3 | [EXERCISES.md — Bloque 3](EXERCISES.md#bloque-3-skills--el-superpoder-compartido-30-min) | Crear un Skill útil para tu rol |
-| 4 | [EXERCISES.md — Bloque 4](EXERCISES.md#bloque-4-claude-cowork--para-toda-la-organización-25-min) | Organizar archivos y generar informes |
-| 5 | [Referencia rápida](guides/quick-reference.md) | Comandos y atajos esenciales |
+| 2 | [Guia de Cowork](guides/cowork-guide.md) | Que es Cowork y como empezar |
+| 3 | [EXERCISES.md — Bloque 4](EXERCISES.md#bloque-4-skills--la-nueva-gran-evolucion) | Crear Skill de doc-summarizer |
+| 4 | [EXERCISES.md — Bloque 5](EXERCISES.md#bloque-5-cowork--mas-alla-del-codigo) | Organizar archivos y generar informes |
+| 5 | [Referencia rapida](guides/quick-reference.md) | Comandos y atajos esenciales |
 
 ## Mapa completo de recursos
 
@@ -39,19 +40,21 @@ Antes del workshop:
 
 Durante el workshop:
   EXERCISES.md ............... Ejercicios paso a paso (seguir en orden)
-  guides/quick-reference.md .. Consulta rápida si te pierdes
+  guides/quick-reference.md .. Consulta rapida si te pierdes
 
-Después del workshop:
+Despues del workshop:
   guides/skills-guide.md ..... Crear y personalizar Skills
   guides/cowork-guide.md ..... Dominar Cowork
   solutions/ ................. Soluciones de referencia
   .claude/skills/ ............ Skills de ejemplo para adaptar
   .claude/agents/ ............ Agents de ejemplo
+  examples/ .................. Configuracion avanzada (hooks, permisos)
+  INSTRUCTOR-GUIDE.md ........ Guia del instructor
 ```
 
 ## Recursos externos
 
-- [Documentación de Claude Code](https://docs.anthropic.com/en/docs/claude-code)
+- [Documentacion de Claude Code](https://docs.anthropic.com/en/docs/claude-code)
 - [Centro de ayuda de Cowork](https://support.claude.com/en/articles/13345190-get-started-with-cowork)
 - [Blog: Introducing Cowork](https://claude.com/blog/cowork-research-preview)
 - [Producto: Cowork](https://claude.com/product/cowork)
