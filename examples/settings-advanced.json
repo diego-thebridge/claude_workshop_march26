@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "defaultMode": "default",
+    "rules": [
+      {
+        "working_directory": "src/core/**",
+        "defaultMode": "plan",
+        "reason": "Logica de negocio critica: solo analisis, no modificar sin aprobacion"
+      },
+      {
+        "working_directory": "tests/**",
+        "defaultMode": "acceptEdits",
+        "reason": "Tests son seguros de modificar rapidamente"
+      },
+      {
+        "working_directory": "**/*.config.js",
+        "defaultMode": "default",
+        "reason": "Archivos de configuracion requieren aprobacion explicita"
+      }
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[$(date)] Modified: $FILE_PATH' >> .claude/audit.log",
+            "continueOnError": true
+          }
+        ]
+      }
+    ]
+  },
+  "env": {
+    "MAX_THINKING_TOKENS": "10000"
+  }
+}

@@ -2,7 +2,7 @@
 
 ## Proyecto
 
-Workshop práctico de Claude Code & Claude Cowork. Audiencia mixta: desarrolladores, product managers y power users.
+Workshop práctico "Claude Code — De Analizar a Enviar". Audiencia mixta: desarrolladores, product managers y power users. Arco narrativo: Plan Mode → Security Hardening → PR → Skills → Cowork.
 
 ## Estructura
 
@@ -12,6 +12,8 @@ Workshop práctico de Claude Code & Claude Cowork. Audiencia mixta: desarrollado
 - `solutions/` — Soluciones de los ejercicios
 - `.claude/skills/` — Skills de ejemplo: code-review, product-spec, meeting-prep, release-notes
 - `.claude/agents/` — Agent de ejemplo: security-auditor
+- `examples/` — Configuración avanzada de hooks y permisos (importada de repo 1)
+- `INSTRUCTOR-GUIDE.md` — Guía del instructor con timing, talking points y fallbacks
 
 ## Idioma
 
