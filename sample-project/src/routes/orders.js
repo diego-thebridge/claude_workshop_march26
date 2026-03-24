@@ -72,8 +72,11 @@ router.post('/', authenticate, (req, res) => {
         return res.status(404).json({ error: `Product ${item.productId} not found` });
       }
 
-      // NOTE: No stock check! Order proceeds even if stock is 0 or insufficient
       const quantity = item.quantity || 1;
+
+      if (product.stock < quantity) {
+        return res.status(400).json({ error: `Insufficient stock for "${product.name}". Available: ${product.stock}, requested: ${quantity}` });
+      }
       total += product.price * quantity;
 
       orderItems.push({

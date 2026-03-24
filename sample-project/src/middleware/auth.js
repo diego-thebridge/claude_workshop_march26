@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-// VULNERABILITY: Hardcoded JWT secret
-const JWT_SECRET = 'super-secret-key-12345';
+const JWT_SECRET = process.env.JWT_SECRET || 'default-dev-secret';
 
 function authenticate(req, res, next) {
   const authHeader = req.headers.authorization;

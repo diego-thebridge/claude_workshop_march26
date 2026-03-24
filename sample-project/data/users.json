@@ -3,7 +3,7 @@
     "id": "user-001",
     "name": "Alice Johnson",
     "email": "alice@example.com",
-    "password": "admin123",
+    "password": "$2b$10$8W2xN3nkAz85KVjhaF1NUe/I7nhzoJkrru37Xea6Cdi61sGaPfRHy",
     "role": "admin",
     "createdAt": "2025-01-15T10:30:00.000Z"
   },
@@ -11,7 +11,7 @@
     "id": "user-002",
     "name": "Bob Smith",
     "email": "bob@example.com",
-    "password": "password456",
+    "password": "$2b$10$Exxi2x4RAIcRGXP1dLFWvO22gEJ9jBqj4UqQGHTMB72XmpPn1hh26",
     "role": "user",
     "createdAt": "2025-02-20T14:15:00.000Z"
   },
@@ -19,7 +19,7 @@
     "id": "user-003",
     "name": "Carol Williams",
     "email": "carol@example.com",
-    "password": "carol2025",
+    "password": "$2b$10$rkB0iKMRdwX.l0PLuPQGzObthG9Bo8jBsEjkUMAa/gQmsvF1K/kXS",
     "role": "user",
     "createdAt": "2025-03-10T09:00:00.000Z"
   }

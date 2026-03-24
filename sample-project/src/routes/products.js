@@ -27,7 +27,6 @@ router.get('/', (req, res) => {
 });
 
 // GET search products
-// VULNERABILITY: String concatenation in filter simulating injection pattern
 router.get('/search', (req, res) => {
   try {
     const products = readProducts();
@@ -37,9 +36,11 @@ router.get('/search', (req, res) => {
       return res.status(400).json({ error: 'Query parameter "q" is required' });
     }
 
-    // Dangerous: building a filter function from user input via string concatenation
-    const filterFn = new Function('product', 'return product.name.toLowerCase().includes("' + q.toLowerCase() + '") || product.description.toLowerCase().includes("' + q.toLowerCase() + '")');
-    const results = products.filter(filterFn);
+    const query = q.toLowerCase();
+    const results = products.filter(product =>
+      product.name.toLowerCase().includes(query) ||
+      product.description.toLowerCase().includes(query)
+    );
 
     res.json(results);
   } catch (err) {
@@ -64,14 +65,29 @@ router.get('/:id', (req, res) => {
 });
 
 // POST create product
-// VULNERABILITY: No input validation — accepts any body shape
 router.post('/', authenticate, (req, res) => {
   try {
+    const { name, description, price, stock, category } = req.body;
+
+    if (!name || typeof name !== 'string') {
+      return res.status(400).json({ error: 'Name is required and must be a string' });
+    }
+    if (typeof price !== 'number' || price <= 0) {
+      return res.status(400).json({ error: 'Price must be a positive number' });
+    }
+    if (stock !== undefined && (!Number.isInteger(stock) || stock < 0)) {
+      return res.status(400).json({ error: 'Stock must be a non-negative integer' });
+    }
+
     const products = readProducts();
 
     const newProduct = {
       id: uuidv4(),
-      ...req.body,
+      name,
+      description: description || '',
+      price,
+      stock: stock || 0,
+      category: category || 'general',
       createdAt: new Date().toISOString()
     };
 
@@ -105,8 +121,7 @@ router.put('/:id', authenticate, (req, res) => {
 });
 
 // DELETE product
-// VULNERABILITY: No authentication check — anyone can delete
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authenticate, (req, res) => {
   try {
     const products = readProducts();
     const index = products.findIndex(p => p.id === req.params.id);

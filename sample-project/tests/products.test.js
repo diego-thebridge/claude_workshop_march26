@@ -5,7 +5,7 @@ const app = require('../src/index');
 const jwt = require('jsonwebtoken');
 
 const DATA_FILE = path.join(__dirname, '../data/products.json');
-const JWT_SECRET = 'super-secret-key-12345';
+const JWT_SECRET = process.env.JWT_SECRET || 'default-dev-secret';
 
 // Helper to get a valid token
 function getAuthToken(user = { id: 'user-001', email: 'alice@example.com', role: 'admin' }) {
@@ -80,16 +80,80 @@ describe('POST /api/products', () => {
   it('should reject request without auth token', async () => {
     const res = await request(app)
       .post('/api/products')
-      .send({ name: 'Unauthorized Product' });
+      .send({ name: 'Unauthorized Product', price: 10, stock: 1 });
 
     expect(res.status).toBe(401);
   });
+
+  it('should reject product without name', async () => {
+    const token = getAuthToken();
+    const res = await request(app)
+      .post('/api/products')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ price: 9.99, stock: 5 });
+
+    expect(res.status).toBe(400);
+    expect(res.body.error).toMatch(/Name/i);
+  });
+
+  it('should reject product with negative price', async () => {
+    const token = getAuthToken();
+    const res = await request(app)
+      .post('/api/products')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ name: 'Bad Product', price: -5, stock: 1 });
+
+    expect(res.status).toBe(400);
+    expect(res.body.error).toMatch(/Price/i);
+  });
+
+  it('should reject product with non-integer stock', async () => {
+    const token = getAuthToken();
+    const res = await request(app)
+      .post('/api/products')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ name: 'Bad Product', price: 10, stock: 3.5 });
+
+    expect(res.status).toBe(400);
+    expect(res.body.error).toMatch(/Stock/i);
+  });
+
+  it('should reject product with negative stock', async () => {
+    const token = getAuthToken();
+    const res = await request(app)
+      .post('/api/products')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ name: 'Bad Product', price: 10, stock: -1 });
+
+    expect(res.status).toBe(400);
+    expect(res.body.error).toMatch(/Stock/i);
+  });
+
+  it('should not allow mass assignment of extra fields', async () => {
+    const token = getAuthToken();
+    const res = await request(app)
+      .post('/api/products')
+      .set('Authorization', `Bearer ${token}`)
+      .send({ name: 'Safe Product', price: 10, stock: 1, isAdmin: true, __proto__: { polluted: true } });
+
+    expect(res.status).toBe(201);
+    expect(res.body).not.toHaveProperty('isAdmin');
+  });
 });
 
-// NOTE: Tests are intentionally incomplete.
-// Missing tests for:
-// - PUT /api/products/:id
-// - DELETE /api/products/:id (which has no auth!)
-// - GET /api/products/search
-// - Edge cases (empty body, invalid data types, etc.)
-// - Concurrent access scenarios
+describe('DELETE /api/products/:id', () => {
+  it('should reject delete without auth token', async () => {
+    const res = await request(app).delete('/api/products/prod-001');
+    expect(res.status).toBe(401);
+  });
+
+  it('should delete product with valid token', async () => {
+    const token = getAuthToken();
+    const res = await request(app)
+      .delete('/api/products/prod-010')
+      .set('Authorization', `Bearer ${token}`);
+
+    expect(res.status).toBe(200);
+    expect(res.body.product.id).toBe('prod-010');
+  });
+});
