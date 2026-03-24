@@ -1,4 +1,4 @@
-# Workshop: Claude Code — De Analizar a Enviar
+# Claude Code: Ship It — Workshop Practico de IA para Equipos
 
 ## Descripcion
 
