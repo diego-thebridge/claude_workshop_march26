@@ -5,7 +5,7 @@ const app = require('../src/index');
 const jwt = require('jsonwebtoken');
 
 const DATA_FILE = path.join(__dirname, '../data/products.json');
-const JWT_SECRET = 'super-secret-key-12345';
+const JWT_SECRET = process.env.JWT_SECRET || 'super-secret-key-12345';
 
 // Helper to get a valid token
 function getAuthToken(user = { id: 'user-001', email: 'alice@example.com', role: 'admin' }) {

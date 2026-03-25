@@ -27,7 +27,6 @@ router.get('/', (req, res) => {
 });
 
 // GET search products
-// VULNERABILITY: String concatenation in filter simulating injection pattern
 router.get('/search', (req, res) => {
   try {
     const products = readProducts();
@@ -37,9 +36,11 @@ router.get('/search', (req, res) => {
       return res.status(400).json({ error: 'Query parameter "q" is required' });
     }
 
-    // Dangerous: building a filter function from user input via string concatenation
-    const filterFn = new Function('product', 'return product.name.toLowerCase().includes("' + q.toLowerCase() + '") || product.description.toLowerCase().includes("' + q.toLowerCase() + '")');
-    const results = products.filter(filterFn);
+    const query = q.toLowerCase();
+    const results = products.filter(product =>
+      product.name.toLowerCase().includes(query) ||
+      product.description.toLowerCase().includes(query)
+    );
 
     res.json(results);
   } catch (err) {
@@ -105,8 +106,7 @@ router.put('/:id', authenticate, (req, res) => {
 });
 
 // DELETE product
-// VULNERABILITY: No authentication check — anyone can delete
-router.delete('/:id', (req, res) => {
+router.delete('/:id', authenticate, (req, res) => {
   try {
     const products = readProducts();
     const index = products.findIndex(p => p.id === req.params.id);
