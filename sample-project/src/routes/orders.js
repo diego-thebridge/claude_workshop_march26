@@ -22,19 +22,18 @@ function readProducts() {
   return JSON.parse(raw);
 }
 
-// GET all orders
-// VULNERABILITY: No authorization — any authenticated user can see all orders
+// GET all orders (filtered by authenticated user)
 router.get('/', authenticate, (req, res) => {
   try {
     const orders = readOrders();
-    res.json(orders);
+    const userOrders = orders.filter(o => o.userId === req.user.id);
+    res.json(userOrders);
   } catch (err) {
     res.status(500).json({ error: 'Failed to read orders' });
   }
 });
 
-// GET single order
-// VULNERABILITY: No authorization — any user can view any order
+// GET single order (with ownership check)
 router.get('/:id', authenticate, (req, res) => {
   try {
     const orders = readOrders();
@@ -42,6 +41,10 @@ router.get('/:id', authenticate, (req, res) => {
 
     if (!order) {
       return res.status(404).json({ error: 'Order not found' });
+    }
+
+    if (order.userId !== req.user.id) {
+      return res.status(403).json({ error: 'Access denied' });
     }
 
     res.json(order);
@@ -102,7 +105,7 @@ router.post('/', authenticate, (req, res) => {
   }
 });
 
-// PUT update order status
+// PUT update order status (with ownership check)
 router.put('/:id/status', authenticate, (req, res) => {
   try {
     const orders = readOrders();
@@ -110,6 +113,10 @@ router.put('/:id/status', authenticate, (req, res) => {
 
     if (index === -1) {
       return res.status(404).json({ error: 'Order not found' });
+    }
+
+    if (orders[index].userId !== req.user.id) {
+      return res.status(403).json({ error: 'Access denied' });
     }
 
     const { status } = req.body;

@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
 
-// VULNERABILITY: Hardcoded JWT secret
-const JWT_SECRET = 'super-secret-key-12345';
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!JWT_SECRET) {
+  throw new Error('JWT_SECRET environment variable is required');
+}
 
 function authenticate(req, res, next) {
   const authHeader = req.headers.authorization;
